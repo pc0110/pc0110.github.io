@@ -233,11 +233,11 @@
 <p>把开发人员从繁琐的DOM操作中解放出来，把关注点放在如何操作Model上。</p>
 <p> ![1525828854056](E:/网页下载/笔记 (1)/笔记/assets/1525828854056.png)</p>
 <p>而我们今天要学习的，就是一款MVVM模式的框架：Vue</p>
-<h1 id="1-认识Vue"><a href="#1-认识Vue" class="headerlink" title="1.认识Vue"></a>1.认识Vue</h1><p>Vue (读音 /vjuː/，类似于 <strong>view</strong>) 是一套用于构建用户界面的<strong>渐进式框架</strong>。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与<a href="https://cn.vuejs.org/v2/guide/single-file-components.html" target="_blank" rel="noopener">现代化的工具链</a>以及各种<a href="https://github.com/vuejs/awesome-vue#libraries--plugins" target="_blank" rel="noopener">支持类库</a>结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。</p>
+<h1 id="1-认识Vue"><a href="#1-认识Vue" class="headerlink" title="1.认识Vue"></a>1.认识Vue</h1><p>Vue (读音 /vjuː/，类似于 <strong>view</strong>) 是一套用于构建用户界面的<strong>渐进式框架</strong>。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与<a href="https://cn.vuejs.org/v2/guide/single-file-components.html" target="_blank" rel="noopener">现代化的工具链</a>以及各种<a href="https://github.com/vuejs/awesome-vue#libraries--plugins">支持类库</a>结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。</p>
 <pre><code>前端框架三巨头：Vue.js、React.js、AngularJS，vue.js以其轻量易用著称，vue.js和React.js发展速度最快，AngularJS还是老大。</code></pre><p>官网：<a href="https://cn.vuejs.org/" target="_blank" rel="noopener">https://cn.vuejs.org/</a></p>
 <p>参考：<a href="https://cn.vuejs.org/v2/guide/" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/</a></p>
 <p>![1525829249048](E:/网页下载/笔记 (1)/笔记/assets/1525829249048.png)</p>
-<p>Git地址：<a href="https://github.com/vuejs" target="_blank" rel="noopener">https://github.com/vuejs</a></p>
+<p>Git地址：<a href="https://github.com/vuejs">https://github.com/vuejs</a></p>
 <p>![1525829030730](E:/网页下载/笔记 (1)/笔记/assets/1525829030730.png)</p>
 <p><strong>尤雨溪</strong>，Vue.js 创作者，Vue Technology创始人，致力于Vue的研究开发。</p>
 <h1 id="2-Node和NPM"><a href="#2-Node和NPM" class="headerlink" title="2.Node和NPM"></a>2.Node和NPM</h1><p>前面说过，NPM是Node提供的模块管理工具，可以非常方便的下载安装很多前端框架，包括Jquery、AngularJS、VueJs都有。为了后面学习方便，我们先安装node及NPM工具。</p>
@@ -251,8 +251,8 @@
 <p>![1529597573453](E:/网页下载/笔记 (1)/笔记/assets/1529597573453.png)</p>
 <p>位置信息：</p>
 <p>![1529597672429](E:/网页下载/笔记 (1)/笔记/assets/1529597672429.png)</p>
-<h2 id="3-2-安装vue"><a href="#3-2-安装vue" class="headerlink" title="3.2.安装vue"></a>3.2.安装vue</h2><h3 id="3-2-1-下载安装"><a href="#3-2-1-下载安装" class="headerlink" title="3.2.1.下载安装"></a>3.2.1.下载安装</h3><p>下载地址：<a href="https://github.com/vuejs/vue" target="_blank" rel="noopener">https://github.com/vuejs/vue</a></p>
-<p>可以下载2.5.16版本<a href="https://github.com/vuejs/vue/archive/v2.5.16.zip" target="_blank" rel="noopener">https://github.com/vuejs/vue/archive/v2.5.16.zip</a></p>
+<h2 id="3-2-安装vue"><a href="#3-2-安装vue" class="headerlink" title="3.2.安装vue"></a>3.2.安装vue</h2><h3 id="3-2-1-下载安装"><a href="#3-2-1-下载安装" class="headerlink" title="3.2.1.下载安装"></a>3.2.1.下载安装</h3><p>下载地址：<a href="https://github.com/vuejs/vue">https://github.com/vuejs/vue</a></p>
+<p>可以下载2.5.16版本<a href="https://github.com/vuejs/vue/archive/v2.5.16.zip">https://github.com/vuejs/vue/archive/v2.5.16.zip</a></p>
 <p>下载解压，得到vue.js文件。</p>
 <h3 id="3-2-2-使用CDN"><a href="#3-2-2-使用CDN" class="headerlink" title="3.2.2.使用CDN"></a>3.2.2.使用CDN</h3><p>或者也可以直接使用公共的CDN服务：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 开发环境版本，包含了用帮助的命令行警告 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
