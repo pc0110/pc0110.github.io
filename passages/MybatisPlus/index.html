@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+  
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta name="author" content="xxx">
+  
+  
+  <title>MybatisPlus | Hexo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="MybatisPlus,">
+  
+
+  
+  <meta name="description" content="xxx">
+
+  
+
+  
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+  
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"MDoK06tUeJNe9gUQnRye15hO-gzGzoHsz","appkey":"c0Irl5sjfr5NqD3wIbJrMCDA","comment":true,"count":true},
+    welcome: {"enable":false,"interval":30},
+    start_time: "2019-10-16",
+    passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
+    is_post: true,
+    lock: false,
+    author: "xxx",
+    share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/blog/"
+  };
+</script>
+
+  <script src="/blog/vendor/sha256.min.js"></script>
+<script src="/blog/js/auth.js"></script>
+<script src="/blog/js/index.js"></script>
+<script src="/blog/vendor/qrcode.min.js"></script>
+
+  
+    <link rel="icon" href="/blog/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/blog/images/touch-icon.png">
+  
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/blog/css/index.css">
+<link rel="stylesheet" href="/blog/styles/components/highlight/highlight.css">
+
+  
+</head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/blog/">xxx</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | 不要忘记，你依然是个菜鸡！</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/blog/" target="_self">首页</a>
+      
+        <a href="/blog/archives/" target="_self">归档</a>
+      
+        <a href="/blog/tags/" target="_self">标签</a>
+      
+        <a href="/blog/categories/" target="_self">分类</a>
+      
+        <a href="/blog/friends/" target="_self">友链</a>
+      
+        <a href="/blog/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/hahahashiqi/" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/blog/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/friends/" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-11-01
+    </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    MybatisPlus
+  </h1>
+  
+  <article class="passage-article">
+    <h1 id="myabtis-mybatisplus"><a href="#myabtis-mybatisplus" class="headerlink" title="myabtis+mybatisplus"></a>myabtis+mybatisplus</h1><p>增强mybatis但是不做改变<br>属于ORM框架<br>1.jar<br>2.数据表<br>3.Mybatis的配置文件<br>4.log4J的日志信息<br>5.数据库的连接信息<br>6.Spring配置文件</p>
+<p>其中的mybatis-plus 里面包含三个jar ：mybatis  mybatis-spring mybatis-plus</p>
+<h1 id="切换到Mbatis-Plus"><a href="#切换到Mbatis-Plus" class="headerlink" title="切换到Mbatis-Plus"></a>切换到Mbatis-Plus</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;sqlSessionFactoryBean&quot; class=&quot;com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean&quot;&gt;</span><br><span class="line"></span><br><span class="line">CRUD操作</span><br><span class="line">Mybatis-Plus：只需要写接口不需要写*.xml文件，需要继承继承一个BaseMapper&lt;Student&gt;可以指定一id个泛型</span><br></pre></td></tr></table></figure>
+
+<p>MybatisPlus帮你把基本的SqL语句写好了</p>
+<p>@TableName(“表名”)<br>@TableId(value=”字段名”，type=IdTYPE.AUTO)//主键自增，还需要指定数据库里面的自增<br>@TableField（）指定其他字段 命名规则:stuName-&gt;stu_name<br>注意：<br>    tuo’luo’feng<br>    属性stuName-自动转成stu_name需要配置一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;settings&gt;</span><br><span class="line">    &lt;setting namm=&quot;mapUnderscoreTocameCase&quot; value=&quot;false&quot;&gt;</span><br><span class="line">    &lt;setting name=&quot;logIml&quot; value=&quot;LOG4J&quot;&gt;</span><br><span class="line">&lt;/settings&gt;</span><br></pre></td></tr></table></figure>
+
+<p>或者是把表里面改成stu_name在实体类里面在属性上加入注解@TableField（value=”stu_name”）</p>
+<h1 id="MP里面的where语句用Warpper实现"><a href="#MP里面的where语句用Warpper实现" class="headerlink" title="MP里面的where语句用Warpper实现"></a>MP里面的where语句用Warpper实现</h1><p>预加载：MP启动时，会预加载常见的CRUD语句，并将这些语句封装到MapperStatement对象中</p>
+<h1 id="AR-activeRecoder形式-通过实体类来实现CRUD-不需要Mapper对象"><a href="#AR-activeRecoder形式-通过实体类来实现CRUD-不需要Mapper对象" class="headerlink" title="AR  activeRecoder形式 :通过实体类来实现CRUD 不需要Mapper对象"></a>AR  activeRecoder形式 :通过实体类来实现CRUD 不需要Mapper对象</h1><p>需要在实体类中 继承Model<student><br>加载IOC容器</student></p>
+<p>Student student = new Student(‘qwe’,22);<br>srudent.inster();</p>
+<p>MP将主键设置为了Serializable序列化类型，目的：；可以接受常见的类型：8基本类型+String</p>
+<p>面向对象的SQL语句：<br>    wrpper.lanbda().like(Student::getName,”a”);<br>面向SQL的查询语句：<br>    wrapper.like(“stu_name”,”a”);</p>
+<h1 id="MP逆向工程"><a href="#MP逆向工程" class="headerlink" title="MP逆向工程"></a>MP逆向工程</h1><p>1.依赖<br>2.写一个类生成代码</p>
+<p>lombok:1.依赖<br>        2.配置  idea下载一个插件</p>
+<h1 id="乐观锁-cvs算法-悲观锁：synchorinzed-lock"><a href="#乐观锁-cvs算法-悲观锁：synchorinzed-lock" class="headerlink" title="乐观锁:cvs算法  悲观锁：synchorinzed,lock"></a>乐观锁:cvs算法  悲观锁：synchorinzed,lock</h1><p> 悲观锁:把公共需要的值锁住，等待释放后在查询，把并发变成串行 （严重影响效率，不建议使用）<br> 乐观锁：在每次使用之 进行version检测 没修改一次version会+1</p>
+<h1 id="SQL-注入器"><a href="#SQL-注入器" class="headerlink" title="SQL 注入器"></a>SQL 注入器</h1><p> 通过自己编写的sql语句放入到MP的BaseMapper类中预加载<br> 自定义方法：<br>    1.写自己的sql语句+标签名MyDelete extends AbstractMethod<br>    2.自定义注入器：包含原来的+自定义的<br>    3.配置 告知MP ，以后使用自定义的注入器</p>
+<h1 id="逻辑删除"><a href="#逻辑删除" class="headerlink" title="逻辑删除"></a>逻辑删除</h1><p>@TableLohic<br>写一个字段<br>目的：为了数据安全，假删除只是对数据进行修改操作0-&gt;1，真删除是真正的删除操作</p>
+
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#myabtis-mybatisplus"><span class="toc-text">myabtis+mybatisplus</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#切换到Mbatis-Plus"><span class="toc-text">切换到Mbatis-Plus</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MP里面的where语句用Warpper实现"><span class="toc-text">MP里面的where语句用Warpper实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AR-activeRecoder形式-通过实体类来实现CRUD-不需要Mapper对象"><span class="toc-text">AR  activeRecoder形式 :通过实体类来实现CRUD 不需要Mapper对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MP逆向工程"><span class="toc-text">MP逆向工程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#乐观锁-cvs算法-悲观锁：synchorinzed-lock"><span class="toc-text">乐观锁:cvs算法  悲观锁：synchorinzed,lock</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL-注入器"><span class="toc-text">SQL 注入器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#逻辑删除"><span class="toc-text">逻辑删除</span></a></li></ol>
+  </div>
+</aside>
+  
+  
+    <div class="passage-tags">
+     
+      <a href="/blog/tags/MybatisPlus/"><i class="fa fa-tags"></i>MybatisPlus</a>
+    
+    </div>
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">博客推荐</h5>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self"></a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="http://baidu.com/" target="_blank">百度</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">系列教程</h5>
+          
+            <span class="site-footer-item">
+              <a href="#" target="_self">webpack4系列教程</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="#" target="_self">设计模式手册</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">抓到我</h5>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self">掘金</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self">思否</a>
+            </span>
+          
+        </div>
+      
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: 
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <div class="site-layer-input-choose">
+          <a href="javascript:void(0);" title="Change Search Engine">Google</a>
+        </div>
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      
+        <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+          
+            <div>
+              <img src="/blog/images/wechat.png" alt="WeChat">
+              
+                <p>WeChat</p>
+              
+            </div>
+          
+            <div>
+              <img src="/blog/images/alipay.png" alt="AliPay">
+              
+                <p>AliPay</p>
+              
+            </div>
+          
+        </div>
+      
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="/blog/passages/Mysql/" data-enable="true">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/blog/passages/Dubbo/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    
+      <a href="javascript:void(0);" id="site-reward">
+        <i class="fa fa-thumbs-up"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+    <a id="share-btn-twitter" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+  
+  
+    <a id="share-btn-facebook" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-facebook"></i>
+    </a>
+  
+  
+    <a id="share-btn-weibo" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-weibo"></i>
+    </a>
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+
+
+
+
+
+    
+  </body>
+</html>

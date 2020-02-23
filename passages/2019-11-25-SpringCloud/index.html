@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+  
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta name="author" content="xxx">
+  
+  
+  <title>2019-11-25-SpringCloud | Hexo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="SpringCloud,Spring,">
+  
+
+  
+  <meta name="description" content="xxx">
+
+  
+
+  
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+  
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"MDoK06tUeJNe9gUQnRye15hO-gzGzoHsz","appkey":"c0Irl5sjfr5NqD3wIbJrMCDA","comment":true,"count":true},
+    welcome: {"enable":false,"interval":30},
+    start_time: "2019-10-16",
+    passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
+    is_post: true,
+    lock: false,
+    author: "xxx",
+    share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/blog/"
+  };
+</script>
+
+  <script src="/blog/vendor/sha256.min.js"></script>
+<script src="/blog/js/auth.js"></script>
+<script src="/blog/js/index.js"></script>
+<script src="/blog/vendor/qrcode.min.js"></script>
+
+  
+    <link rel="icon" href="/blog/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/blog/images/touch-icon.png">
+  
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/blog/css/index.css">
+<link rel="stylesheet" href="/blog/styles/components/highlight/highlight.css">
+
+  
+</head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/blog/">xxx</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | 不要忘记，你依然是个菜鸡！</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/blog/" target="_self">首页</a>
+      
+        <a href="/blog/archives/" target="_self">归档</a>
+      
+        <a href="/blog/tags/" target="_self">标签</a>
+      
+        <a href="/blog/categories/" target="_self">分类</a>
+      
+        <a href="/blog/friends/" target="_self">友链</a>
+      
+        <a href="/blog/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/hahahashiqi/" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/blog/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/friends/" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-11-25
+    </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    2019-11-25-SpringCloud
+  </h1>
+  
+  <article class="passage-article">
+    <h2 id="基本流程"><a href="#基本流程" class="headerlink" title="基本流程"></a>基本流程</h2><ol>
+<li>引入相关依赖</li>
+<li>覆盖默认的配置</li>
+<li>在引导类上添加注解，开启相关的组件</li>
+</ol>
+<h1 id="eureka-注册中心，服务的注册与发现"><a href="#eureka-注册中心，服务的注册与发现" class="headerlink" title="eureka 注册中心，服务的注册与发现"></a>eureka 注册中心，服务的注册与发现</h1><h3 id="心跳过期-hhh-service-provider"><a href="#心跳过期-hhh-service-provider" class="headerlink" title="心跳过期 hhh-service-provider"></a>心跳过期 hhh-service-provider</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eureka:</span></span><br><span class="line"><span class="attr">  instance:</span></span><br><span class="line"><span class="attr">    lease-expiration-duration-in-seconds:</span> <span class="number">15</span> <span class="comment">#过期时间</span></span><br><span class="line"><span class="attr">    lease-renewal-interval-in-seconds:</span> <span class="number">5</span> <span class="comment"># 心跳时间</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="拉取服务的间隔时间-hhh-service-consumer"><a href="#拉取服务的间隔时间-hhh-service-consumer" class="headerlink" title="拉取服务的间隔时间 hhh-service-consumer"></a>拉取服务的间隔时间 hhh-service-consumer</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eureka:</span></span><br><span class="line"><span class="attr">  client:</span></span><br><span class="line"><span class="attr">    registry-fetch-interval-seconds:</span> <span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="关闭自我保护，定期清除无效链接"><a href="#关闭自我保护，定期清除无效链接" class="headerlink" title="关闭自我保护，定期清除无效链接"></a>关闭自我保护，定期清除无效链接</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eureka:</span></span><br><span class="line"><span class="attr">  server:</span></span><br><span class="line"><span class="attr">    eviction-interval-timer-in-ms:</span> <span class="number">5000</span> <span class="comment">#单位是毫秒</span></span><br><span class="line"><span class="attr">    enable-self-preservation:</span> <span class="literal">false</span> <span class="comment">#关闭自我保护</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="testTemplate"><a href="#testTemplate" class="headerlink" title="testTemplate"></a>testTemplate</h2><h1 id="ribbon-负载均衡组件"><a href="#ribbon-负载均衡组件" class="headerlink" title="ribbon:负载均衡组件"></a>ribbon:负载均衡组件</h1><ol>
+<li>eureka集成了</li>
+<li>@LoadBalanced: 开启负载均衡</li>
+<li>this.restTemplate.getForObject(“<a href="http://service-provider/user/&quot;" target="_blank" rel="noopener">http://service-provider/user/&quot;</a> + id,User.class);</li>
+</ol>
+<h4 id="BaseLoadBalancer负载均衡策略"><a href="#BaseLoadBalancer负载均衡策略" class="headerlink" title="BaseLoadBalancer负载均衡策略"></a>BaseLoadBalancer负载均衡策略</h4><p>默认springcloud使用的是自己提供的轮询策略，也可以使用自己的策略</p>
+<h1 id="hystrix：容错组件"><a href="#hystrix：容错组件" class="headerlink" title="hystrix：容错组件"></a>hystrix：容错组件</h1><p>降级:检查每次请求，是否请求超时，或者连接池已满</p>
+<ol>
+<li>引入hystrix启动器</li>
+<li>hystrix.command.execution.isolation.thead.timeoutInMilliseconds: 6000 # 设置hystrix的超时时间为6000ms</li>
+<li>在引导类上添加一个注解：@EnableCircuitBreaker</li>
+<li>定义熔断方法，局部(要和被熔断的方法返回值和参数列表一致)  全局(返回值类型要被熔断的方法一致，参数列表必须为空)</li>
+<li>@HystrixCommand(failbackMethod=”局部熔断的方法名”):声明被熔断的方法</li>
+<li>@DefaultProperties(defaultFailback=“全部熔断方法名”)</li>
+</ol>
+<p>熔断：不在发送请求</p>
+<ol>
+<li>close:闭合状态，所有请求正常方法</li>
+<li>open: 打开状态，所有请求都无法访问，如果一定时间内容，失败的比例大于50%或者次数不少于20次</li>
+<li>half open: 半开状态，打开状态默认5s休眠期，在休眠期所有请求都无法正常访问，过了休眠期会进入半开状态，放部分请求通过</li>
+</ol>
+<h1 id="Feign：远程调用组件"><a href="#Feign：远程调用组件" class="headerlink" title="Feign：远程调用组件"></a>Feign：远程调用组件</h1><ol>
+<li>引入openFegin启动器</li>
+<li>fegin.hystrix.enable=true  ，开启Fegin的熔断功能</li>
+<li>在引导类上 @EnableFeignClients</li>
+<li>创建一个接口  @FeginClient(value=”服务名”，fallback=实现类.class)</li>
+<li>在接口中定义一些方法，这些方法的书写方式跟之前controller类似</li>
+<li>创建一个熔断类，实现feigin接口，实现对应的方法，这些方法都是熔断方法</li>
+</ol>
+<h1 id="Zuul-网关组件"><a href="#Zuul-网关组件" class="headerlink" title="Zuul 网关组件"></a>Zuul 网关组件</h1><ol>
+<li><p>引入zuul的启动器</p>
+</li>
+<li><p>配置：zuul.routers.&lt;路由名称&gt;.path=/service-procider/**</p>
+<p>​           zuul.routers.&lt;路由名称&gt;.url=<a href="http://localhost:8002" target="_blank" rel="noopener">http://localhost:8002</a></p>
+<p>​           zuul.routers.&lt;路由名称&gt;.path=/service-provider</p>
+<p>​           zuul.routers.&lt;路由名称&gt;.serviceId=service-provider</p>
+<p>​           zuul.routers.服务名=/servuce-provider/**</p>
+<p>​            不用配置，默认就是服务id开头路径</p>
+</li>
+<li><p>@EnableZuulProxy</p>
+</li>
+</ol>
+<p>过滤器：</p>
+<p>​    创建一个类继承ZuulFilter基类</p>
+<p>​    重写四个方法</p>
+<pre><code>-  filterType: pre route post  error
+-  filterOrder:返回值越小，优先级越高
+-  shouldFilter:是否执行run方法，true执行
+-  run:具体的拦截逻辑</code></pre><p>​            </p>
+
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本流程"><span class="toc-text">基本流程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#eureka-注册中心，服务的注册与发现"><span class="toc-text">eureka 注册中心，服务的注册与发现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#心跳过期-hhh-service-provider"><span class="toc-text">心跳过期 hhh-service-provider</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拉取服务的间隔时间-hhh-service-consumer"><span class="toc-text">拉取服务的间隔时间 hhh-service-consumer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关闭自我保护，定期清除无效链接"><span class="toc-text">关闭自我保护，定期清除无效链接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#testTemplate"><span class="toc-text">testTemplate</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ribbon-负载均衡组件"><span class="toc-text">ribbon:负载均衡组件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#BaseLoadBalancer负载均衡策略"><span class="toc-text">BaseLoadBalancer负载均衡策略</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hystrix：容错组件"><span class="toc-text">hystrix：容错组件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Feign：远程调用组件"><span class="toc-text">Feign：远程调用组件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Zuul-网关组件"><span class="toc-text">Zuul 网关组件</span></a>
+  </div>
+</aside>
+  
+  
+    <div class="passage-tags">
+     
+      <a href="/blog/tags/SpringCloud/"><i class="fa fa-tags"></i>SpringCloud</a>
+     
+      <a href="/blog/tags/Spring/"><i class="fa fa-tags"></i>Spring</a>
+    
+    </div>
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">博客推荐</h5>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self"></a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="http://baidu.com/" target="_blank">百度</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">系列教程</h5>
+          
+            <span class="site-footer-item">
+              <a href="#" target="_self">webpack4系列教程</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="#" target="_self">设计模式手册</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">抓到我</h5>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self">掘金</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self">思否</a>
+            </span>
+          
+        </div>
+      
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: 
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <div class="site-layer-input-choose">
+          <a href="javascript:void(0);" title="Change Search Engine">Google</a>
+        </div>
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      
+        <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+          
+            <div>
+              <img src="/blog/images/wechat.png" alt="WeChat">
+              
+                <p>WeChat</p>
+              
+            </div>
+          
+            <div>
+              <img src="/blog/images/alipay.png" alt="AliPay">
+              
+                <p>AliPay</p>
+              
+            </div>
+          
+        </div>
+      
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="/blog/passages/2019-11-27-Vue-js/" data-enable="true">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/blog/passages/2019-11-22-微服务/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    
+      <a href="javascript:void(0);" id="site-reward">
+        <i class="fa fa-thumbs-up"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+    <a id="share-btn-twitter" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+  
+  
+    <a id="share-btn-facebook" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-facebook"></i>
+    </a>
+  
+  
+    <a id="share-btn-weibo" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-weibo"></i>
+    </a>
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+
+
+
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+  
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta name="author" content="xxx">
+  
+  
+  <title>Springboot | Hexo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Springboot,Java web,">
+  
+
+  
+  <meta name="description" content="xxx">
+
+  
+
+  
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+  
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"MDoK06tUeJNe9gUQnRye15hO-gzGzoHsz","appkey":"c0Irl5sjfr5NqD3wIbJrMCDA","comment":true,"count":true},
+    welcome: {"enable":false,"interval":30},
+    start_time: "2019-10-16",
+    passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
+    is_post: true,
+    lock: false,
+    author: "xxx",
+    share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/blog/"
+  };
+</script>
+
+  <script src="/blog/vendor/sha256.min.js"></script>
+<script src="/blog/js/auth.js"></script>
+<script src="/blog/js/index.js"></script>
+<script src="/blog/vendor/qrcode.min.js"></script>
+
+  
+    <link rel="icon" href="/blog/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/blog/images/touch-icon.png">
+  
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/blog/css/index.css">
+<link rel="stylesheet" href="/blog/styles/components/highlight/highlight.css">
+
+  
+</head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/blog/">xxx</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | 不要忘记，你依然是个菜鸡！</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/blog/" target="_self">首页</a>
+      
+        <a href="/blog/archives/" target="_self">归档</a>
+      
+        <a href="/blog/tags/" target="_self">标签</a>
+      
+        <a href="/blog/categories/" target="_self">分类</a>
+      
+        <a href="/blog/friends/" target="_self">友链</a>
+      
+        <a href="/blog/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/hahahashiqi/" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/blog/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/friends/" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-11-14
+    </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    Springboot
+  </h1>
+  
+  <article class="passage-article">
+    <h1 id="Springboot入门"><a href="#Springboot入门" class="headerlink" title="Springboot入门"></a>Springboot入门</h1><p>@SpringBootApplication开启了Spring的组件扫描和springboot的自动配置功能，相当于将以下三个注解组合在了一起</p>
+<p>1、@Configuration：表名该类使用基于Java的配置,将此类作为配置类。</p>
+<p>2、@ComponentScan：启用注解扫描。</p>
+<p>3、@EnableAutoConfiguration：开启springboot的自动配置功能。</p>
+<h1 id="Springboot的四种属性注入"><a href="#Springboot的四种属性注入" class="headerlink" title="Springboot的四种属性注入"></a>Springboot的四种属性注入</h1><ul>
+<li>@Configuration：声明一个类作为配置类，代替xml文件</li>
+<li>@Autowired  </li>
+<li>@Bean：声明在方法上，将方法的返回值加入Bean容器，代替<bean>标签</bean></li>
+<li>@Value：属性注入</li>
+<li>@Component 扫描该组件，注册Bean</li>
+<li>@PropertySource：指定外部属性文件。在类上添加@PropertySource(“classpath:/jdbc.properties”)</li>
+</ul>
+<h2 id="RestController-可以代替-Controller-和-Response"><a href="#RestController-可以代替-Controller-和-Response" class="headerlink" title="@RestController 可以代替 @Controller  和 @Response"></a>@RestController 可以代替 @Controller  和 @Response</h2><h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><p>Spring boot 2.0.4 内嵌的Tomcat 8.5 可以直接使用StandardServletMuilpartResolver 而在Springboot提供的文件上传自动化配置类MuilpartAutoCondiguration中也是采用了StandardServletMuilpartResolver </p>
+<p>另一种是CommonsMultpartResolver </p>
+<h1 id="自定义error页面"><a href="#自定义error页面" class="headerlink" title="自定义error页面"></a>自定义error页面</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implements ErrorViewResolver</span><br></pre></td></tr></table></figure>
+
+<h1 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h1><ul>
+<li>Aspect: A modularization of a concern that cuts across multiple classes. Transaction management is a good example of a crosscutting concern in enterprise Java applications. In Spring AOP, aspects are implemented by using regular classes (the <a href="https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework-reference/core.html#aop-schema" target="_blank" rel="noopener">schema-based approach</a>) or regular classes annotated with the <code>@Aspect</code> annotation (the <a href="https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework-reference/core.html#aop-ataspectj" target="_blank" rel="noopener">@AspectJ style</a>).</li>
+<li>Join point: A point during the execution of a program, such as the execution of a method or the handling of an exception. In Spring AOP, a join point always represents a method execution.</li>
+<li>Advice: Action taken by an aspect at a particular join point. Different types of advice include “around”, “before” and “after” advice. (Advice types are discussed later.) Many AOP frameworks, including Spring, model an advice as an interceptor and maintain a chain of interceptors around the join point.</li>
+<li>Pointcut: A predicate that matches join points. Advice is associated with a pointcut expression and runs at any join point matched by the pointcut (for example, the execution of a method with a certain name). The concept of join points as matched by pointcut expressions is central to AOP, and Spring uses the AspectJ pointcut expression language by default.</li>
+<li>Introduction: Declaring additional methods or fields on behalf of a type. Spring AOP lets you introduce new interfaces (and a corresponding implementation) to any advised object. For example, you could use an introduction to make a bean implement an <code>IsModified</code> interface, to simplify caching. (An introduction is known as an inter-type declaration in the AspectJ community.)</li>
+<li>Target object: An object being advised by one or more aspects. Also referred to as the “advised object”. Since Spring AOP is implemented by using runtime proxies, this object is always a proxied object.</li>
+<li>AOP proxy: An object created by the AOP framework in order to implement the aspect contracts (advise method executions and so on). In the Spring Framework, an AOP proxy is a JDK dynamic proxy or a CGLIB proxy.</li>
+<li>Weaving: linking aspects with other application types or objects to create an advised object. This can be done at compile time (using the AspectJ compiler, for example), load time, or at runtime. Spring AOP, like other pure Java AOP frameworks, performs weaving at runtime.</li>
+</ul>
+<p>Spring AOP includes the following types of advice:</p>
+<ul>
+<li>Before advice: Advice that runs before a join point but that does not have the ability to prevent execution flow proceeding to the join point (unless it throws an exception).</li>
+<li>After returning advice: Advice to be run after a join point completes normally (for example, if a method returns without throwing an exception).</li>
+<li>After throwing advice: Advice to be executed if a method exits by throwing an exception.</li>
+<li>After (finally) advice: Advice to be executed regardless of the means by which a join point exits (normal or exceptional return).</li>
+<li>Around advice: Advice that surrounds a join point such as a method invocation. This is the most powerful kind of advice. Around advice can perform custom behavior before and after the method invocation. It is also responsible for choosing whether to proceed to the join point or to shortcut the advised method execution by returning its own return value or throwing an exception</li>
+</ul>
+<h1 id="Mapper文件的使用"><a href="#Mapper文件的使用" class="headerlink" title="Mapper文件的使用"></a>Mapper文件的使用</h1><h3 id="映射文件的顶级元素"><a href="#映射文件的顶级元素" class="headerlink" title="映射文件的顶级元素"></a>映射文件的顶级元素</h3><ul>
+<li><strong>select：</strong>映射查询语句</li>
+<li><strong>insert：</strong>映射插入语句</li>
+<li><strong>update：</strong>映射更新语句</li>
+<li><strong>delete：</strong>映射删除语句</li>
+<li><strong>sql：</strong>可以重用的sql代码块</li>
+<li><strong>resultMap：</strong>最复杂，最有力量的元素，用来描述如何从数据库结果集中加载你的对象</li>
+<li>cache：配置给定命名空间的缓存</li>
+<li>cache-ref：从其他命名空间引用缓存配置</li>
+</ul>
+<h3 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.hhh.mapper.BookMapper"</span>&gt;</span><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在Java代码中引用某个sql映射时，使用的亦是含有名称空间的全路径。如：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">session.update("com.hhh.mapper.BookMapper.updateBookById",book)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Select-标签的属性信息"><a href="#Select-标签的属性信息" class="headerlink" title="Select 标签的属性信息"></a>Select 标签的属性信息</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span></span></span><br><span class="line">　　&lt;!-- </span><br><span class="line">　　　　1. id（必须配置）</span><br><span class="line">　　　　id是命名空间中的唯一标识符，可被用来代表这条语句</span><br><span class="line">　　　　一个命名空间（namespace）对应一个dao接口</span><br><span class="line">　　　　这个id也应该对应dao里面的某个方法（sql相当于方法的实现），因此id应该与方法名一致</span><br><span class="line">　　 --&gt;</span><br><span class="line">　　id="selectUser"</span><br><span class="line"></span><br><span class="line">　　<span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">　　　　2. parapeterType（可选配置，默认由mybatis自动选择处理）</span></span><br><span class="line"><span class="comment">　　　　将要传入语句的参数的完全限定名或别名，如果不配置，mybatis会通过ParamterHandler根据参数类型默认选择合适的typeHandler进行处理</span></span><br><span class="line"><span class="comment">　　　　paramterType 主要指定参数类型，可以是int, short, long, string等类型，也可以是复杂类型（如对象）</span></span><br><span class="line"><span class="comment">　　 --&gt;</span></span><br><span class="line">　　parapeterType="int"</span><br><span class="line"></span><br><span class="line">　　<span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">　　　　3. resultType（resultType 与 resultMap 二选一配置）</span></span><br><span class="line"><span class="comment">　　　　用来指定返回类型，指定的类型可以是基本类型，也可以是java容器，也可以是javabean</span></span><br><span class="line"><span class="comment">　　 --&gt;</span></span><br><span class="line">　　resultType="hashmap"</span><br><span class="line">　　</span><br><span class="line">　　<span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">　　　　4. resultMap（resultType 与 resultMap 二选一配置）</span></span><br><span class="line"><span class="comment">　　　　用于引用我们通过 resultMap 标签定义的映射类型，这也是mybatis组件高级复杂映射的关键</span></span><br><span class="line"><span class="comment">　　 --&gt;</span></span><br><span class="line">　　resultMap="USER_RESULT_MAP"</span><br><span class="line">　　</span><br><span class="line">　　<span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">　　　　5. flushCache（可选配置）</span></span><br><span class="line"><span class="comment">　　　　将其设置为true，任何时候语句被调用，都会导致本地缓存和二级缓存被清空，默认值：false</span></span><br><span class="line"><span class="comment">　　 --&gt;</span></span><br><span class="line">　　flushCache="false"</span><br><span class="line"></span><br><span class="line">　　<span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">　　　　6. useCache（可选配置）</span></span><br><span class="line"><span class="comment">　　　　将其设置为true，会导致本条语句的结果被二级缓存，默认值：对select元素为true</span></span><br><span class="line"><span class="comment">　　 --&gt;</span></span><br><span class="line">　　useCache="true"</span><br><span class="line"></span><br><span class="line">　　<span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">　　　　7. timeout（可选配置）</span></span><br><span class="line"><span class="comment">　　　　这个设置是在抛出异常之前，驱动程序等待数据库返回请求结果的秒数，默认值为：unset（依赖驱动）</span></span><br><span class="line"><span class="comment">　　 --&gt;</span></span><br><span class="line">　　timeout="10000"</span><br><span class="line"></span><br><span class="line">　　<span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">　　　　8. fetchSize（可选配置）</span></span><br><span class="line"><span class="comment">　　　　这是尝试影响驱动程序每次批量返回的结果行数和这个设置值相等。默认值为：unset（依赖驱动）</span></span><br><span class="line"><span class="comment">　　 --&gt;</span></span><br><span class="line">　　fetchSize="256"</span><br><span class="line"></span><br><span class="line">　　<span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">　　　　9. statementType（可选配置）</span></span><br><span class="line"><span class="comment">　　　　STATEMENT, PREPARED或CALLABLE的一种，这会让MyBatis使用选择Statement, PrearedStatement或CallableStatement，默认值：PREPARED</span></span><br><span class="line"><span class="comment">　　 --&gt;</span></span><br><span class="line">　　statementType="PREPARED"</span><br><span class="line"></span><br><span class="line">　　<span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">　　　　10. resultSetType（可选配置）</span></span><br><span class="line"><span class="comment">　　　　FORWARD_ONLY，SCROLL_SENSITIVE 或 SCROLL_INSENSITIVE 中的一个，默认值为：unset（依赖驱动）</span></span><br><span class="line"><span class="comment">　　 --&gt;</span></span><br><span class="line">　　resultSetType="FORWORD_ONLY"</span><br><span class="line">&gt;<span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="resultMap标签的属性信息"><a href="#resultMap标签的属性信息" class="headerlink" title="resultMap标签的属性信息"></a>resultMap标签的属性信息</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">　　1. type 对应的返回类型，可以是javabean, 也可以是其它</span></span><br><span class="line"><span class="comment">　　2. id 必须唯一， 用于标示这个resultMap的唯一性，在使用resultMap的时候，就是通过id引用</span></span><br><span class="line"><span class="comment">　　3. extends 继承其他resultMap标签</span></span><br><span class="line"><span class="comment"> --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">type</span>=<span class="string">""</span> <span class="attr">id</span>=<span class="string">""</span> <span class="attr">extends</span>=<span class="string">""</span>&gt;</span>　　</span><br><span class="line">　　<span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">　　　　1. id 唯一性，注意啦，这个id用于标示这个javabean对象的唯一性， 不一定会是数据库的主键（不要把它理解为数据库对应表的主键）</span></span><br><span class="line"><span class="comment">　　　　2. property 属性对应javabean的属性名</span></span><br><span class="line"><span class="comment">　　　　3. column 对应数据库表的列名</span></span><br><span class="line"><span class="comment">       （这样，当javabean的属性与数据库对应表的列名不一致的时候，就能通过指定这个保持正常映射了）</span></span><br><span class="line"><span class="comment">　　 --&gt;</span></span><br><span class="line">　　<span class="tag">&lt;<span class="name">id</span> <span class="attr">property</span>=<span class="string">""</span> <span class="attr">column</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line">        </span><br><span class="line">　　<span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">　　　　result 与id相比，对应普通属性</span></span><br><span class="line"><span class="comment">　　 --&gt;</span>    </span><br><span class="line">　　<span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">""</span> <span class="attr">column</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line">        </span><br><span class="line">　　<span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">　　　　constructor 对应javabean中的构造方法</span></span><br><span class="line"><span class="comment">　　 --&gt;</span></span><br><span class="line">　　<span class="tag">&lt;<span class="name">constructor</span>&gt;</span></span><br><span class="line">　　　　<span class="comment">&lt;!-- idArg 对应构造方法中的id参数 --&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">idArg</span> <span class="attr">column</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line">       <span class="comment">&lt;!-- arg 对应构造方法中的普通参数 --&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">arg</span> <span class="attr">column</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">constructor</span>&gt;</span></span><br><span class="line">   </span><br><span class="line">   <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">　　　　collection 为关联关系，是实现一对多的关键 </span></span><br><span class="line"><span class="comment">　　　　1. property 为javabean中容器对应字段名</span></span><br><span class="line"><span class="comment">　　　　2. ofType 指定集合中元素的对象类型</span></span><br><span class="line"><span class="comment">　　　　3. select 使用另一个查询封装的结果</span></span><br><span class="line"><span class="comment">　　　　4. column 为数据库中的列名，与select配合使用</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">　　<span class="tag">&lt;<span class="name">collection</span> <span class="attr">property</span>=<span class="string">""</span> <span class="attr">column</span>=<span class="string">""</span> <span class="attr">ofType</span>=<span class="string">""</span> <span class="attr">select</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">　　　　<span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">　　　　　　当使用select属性时，无需下面的配置</span></span><br><span class="line"><span class="comment">　　　　 --&gt;</span></span><br><span class="line">　　　　<span class="tag">&lt;<span class="name">id</span> <span class="attr">property</span>=<span class="string">""</span> <span class="attr">column</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line">　　　　<span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">""</span> <span class="attr">column</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line">　　<span class="tag">&lt;/<span class="name">collection</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">　　<span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">　　　　association 为关联关系，是实现一对一的关键</span></span><br><span class="line"><span class="comment">　　　　1. property 为javabean中容器对应字段名</span></span><br><span class="line"><span class="comment">　　　　2. javaType 指定关联的类型，当使用select属性时，无需指定关联的类型</span></span><br><span class="line"><span class="comment">　　　　3. select 使用另一个select查询封装的结果</span></span><br><span class="line"><span class="comment">　　　　4. column 为数据库中的列名，与select配合使用</span></span><br><span class="line"><span class="comment">　　 --&gt;</span></span><br><span class="line">　　<span class="tag">&lt;<span class="name">association</span> <span class="attr">property</span>=<span class="string">""</span> <span class="attr">column</span>=<span class="string">""</span> <span class="attr">javaType</span>=<span class="string">""</span> <span class="attr">select</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">　　　　<span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">　　　　　　使用select属性时，无需下面的配置</span></span><br><span class="line"><span class="comment">　　　　 --&gt;</span></span><br><span class="line">　　　　<span class="tag">&lt;<span class="name">id</span> <span class="attr">property</span>=<span class="string">""</span> <span class="attr">column</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line">　　　　<span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">""</span> <span class="attr">column</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line">　　<span class="tag">&lt;/<span class="name">association</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="insert标签的属性信息"><a href="#insert标签的属性信息" class="headerlink" title="insert标签的属性信息"></a>insert标签的属性信息</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">insert</span></span></span><br><span class="line">　　&lt;!--</span><br><span class="line">　　　　同 select 标签</span><br><span class="line">　　 --&gt;</span><br><span class="line">　　id="insertProject"</span><br><span class="line"></span><br><span class="line">　　<span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">　　　　同 select 标签</span></span><br><span class="line"><span class="comment">　　 --&gt;</span></span><br><span class="line">　　paramterType="projectInfo"</span><br><span class="line">　　</span><br><span class="line">　　<span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">　　　　1. useGeneratedKeys（可选配置，与 keyProperty 相配合）</span></span><br><span class="line"><span class="comment">　　　　设置为true，并将 keyProperty 属性设为数据库主键对应的实体对象的属性名称</span></span><br><span class="line"><span class="comment">　　 --&gt;</span> </span><br><span class="line">　　useGeneratedKeys="true"</span><br><span class="line"></span><br><span class="line">　　<span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">　　　　2. keyProperty（可选配置，与 useGeneratedKeys 相配合）</span></span><br><span class="line"><span class="comment">　　　　用于获取数据库自动生成的主键</span></span><br><span class="line"><span class="comment">　　 --&gt;</span></span><br><span class="line">　　keyProperty="projectId"</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="重用sql标签"><a href="#重用sql标签" class="headerlink" title="重用sql标签"></a>重用sql标签</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">sql</span> <span class="attr">id</span>=<span class="string">"userColumns"</span>&gt;</span>id,username,password<span class="tag">&lt;/<span class="name">sql</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这个sql片段可以被包含在其他的sql语句中</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectProjectList"</span> <span class="attr">paramertType</span>=<span class="string">"int"</span> <span class="attr">resultType</span>=<span class="string">"hashmap"</span>&gt;</span></span><br><span class="line">　　SELECT </span><br><span class="line">    　　<span class="tag">&lt;<span class="name">include</span> <span class="attr">refid</span>=<span class="string">"userColumns"</span>/&gt;</span></span><br><span class="line">　　FROM </span><br><span class="line">    　　t_project_002_project_info</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="完全限定名使用别名代替"><a href="#完全限定名使用别名代替" class="headerlink" title="完全限定名使用别名代替"></a>完全限定名使用别名代替</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">typeAliases</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">typeAlias</span> <span class="attr">type</span>=<span class="string">"com.enh.bean.ProjectInfo"</span> <span class="attr">alias</span>=<span class="string">"projectInfo"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">typeAliases</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id><a href="#" class="headerlink" title></a></h3>
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Springboot入门"><span class="toc-text">Springboot入门</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Springboot的四种属性注入"><span class="toc-text">Springboot的四种属性注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#RestController-可以代替-Controller-和-Response"><span class="toc-text">@RestController 可以代替 @Controller  和 @Response</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文件上传"><span class="toc-text">文件上传</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#自定义error页面"><span class="toc-text">自定义error页面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AOP"><span class="toc-text">AOP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Mapper文件的使用"><span class="toc-text">Mapper文件的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#映射文件的顶级元素"><span class="toc-text">映射文件的顶级元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命名空间"><span class="toc-text">命名空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Select-标签的属性信息"><span class="toc-text">Select 标签的属性信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#resultMap标签的属性信息"><span class="toc-text">resultMap标签的属性信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#insert标签的属性信息"><span class="toc-text">insert标签的属性信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重用sql标签"><span class="toc-text">重用sql标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#完全限定名使用别名代替"><span class="toc-text">完全限定名使用别名代替</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text"></span></a></li></ol></li></ol></li></ol>
+  </div>
+</aside>
+  
+  
+    <div class="passage-tags">
+     
+      <a href="/blog/tags/Springboot/"><i class="fa fa-tags"></i>Springboot</a>
+     
+      <a href="/blog/tags/Java-web/"><i class="fa fa-tags"></i>Java web</a>
+    
+    </div>
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">博客推荐</h5>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self"></a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="http://baidu.com/" target="_blank">百度</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">系列教程</h5>
+          
+            <span class="site-footer-item">
+              <a href="#" target="_self">webpack4系列教程</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="#" target="_self">设计模式手册</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">抓到我</h5>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self">掘金</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self">思否</a>
+            </span>
+          
+        </div>
+      
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: 
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <div class="site-layer-input-choose">
+          <a href="javascript:void(0);" title="Change Search Engine">Google</a>
+        </div>
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      
+        <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+          
+            <div>
+              <img src="/blog/images/wechat.png" alt="WeChat">
+              
+                <p>WeChat</p>
+              
+            </div>
+          
+            <div>
+              <img src="/blog/images/alipay.png" alt="AliPay">
+              
+                <p>AliPay</p>
+              
+            </div>
+          
+        </div>
+      
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="/blog/passages/2019-11-15-RabbitMQ/" data-enable="true">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/blog/passages/index/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    
+      <a href="javascript:void(0);" id="site-reward">
+        <i class="fa fa-thumbs-up"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+    <a id="share-btn-twitter" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+  
+  
+    <a id="share-btn-facebook" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-facebook"></i>
+    </a>
+  
+  
+    <a id="share-btn-weibo" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-weibo"></i>
+    </a>
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+
+
+
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+  
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta name="author" content="xxx">
+  
+  
+  <title>jdbc | Hexo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="jdbc java,">
+  
+
+  
+  <meta name="description" content="xxx">
+
+  
+
+  
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+  
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"MDoK06tUeJNe9gUQnRye15hO-gzGzoHsz","appkey":"c0Irl5sjfr5NqD3wIbJrMCDA","comment":true,"count":true},
+    welcome: {"enable":false,"interval":30},
+    start_time: "2019-10-16",
+    passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
+    is_post: true,
+    lock: false,
+    author: "xxx",
+    share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/blog/"
+  };
+</script>
+
+  <script src="/blog/vendor/sha256.min.js"></script>
+<script src="/blog/js/auth.js"></script>
+<script src="/blog/js/index.js"></script>
+<script src="/blog/vendor/qrcode.min.js"></script>
+
+  
+    <link rel="icon" href="/blog/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/blog/images/touch-icon.png">
+  
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/blog/css/index.css">
+<link rel="stylesheet" href="/blog/styles/components/highlight/highlight.css">
+
+  
+</head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/blog/">xxx</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | 不要忘记，你依然是个菜鸡！</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/blog/" target="_self">首页</a>
+      
+        <a href="/blog/archives/" target="_self">归档</a>
+      
+        <a href="/blog/tags/" target="_self">标签</a>
+      
+        <a href="/blog/categories/" target="_self">分类</a>
+      
+        <a href="/blog/friends/" target="_self">友链</a>
+      
+        <a href="/blog/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/hahahashiqi/" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/blog/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/friends/" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-10-16
+    </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    jdbc
+  </h1>
+  
+  <article class="passage-article">
+    <h1 id="JDBC-Java-Datebase-Connectivity"><a href="#JDBC-Java-Datebase-Connectivity" class="headerlink" title="JDBC:Java Datebase Connectivity"></a>JDBC:Java Datebase Connectivity</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">	Java</span><br><span class="line">	   |</span><br><span class="line">	jdbc 接口，方法，类  api  Connection Statement PrepareStatement  ResultSe</span><br><span class="line">	   |</span><br><span class="line">         Jdbc DriverManager         管理不同 数据库</span><br><span class="line">        |		|	</span><br><span class="line">mysql 驱动程序     oracle驱动程序      各种不同的数据库驱动 会封装在一个JAR包里面 使用的时候直接调用就可以了</span><br><span class="line">mysql数据库         oracle数据库</span><br></pre></td></tr></table></figure>
+
+<h1 id="JDBC-API-的主要功能："><a href="#JDBC-API-的主要功能：" class="headerlink" title="JDBC  API  的主要功能："></a>JDBC  API  的主要功能：</h1><p>DriverManger:           管理JDBC驱动<br>Connection:    建立链接<br>Statement:   增删改查<br>CallableStatement: 调用数据库中过的存储过程/存储函数<br>Result： 结果集</p>
+<h1 id="具体的驱动类-连接字符串"><a href="#具体的驱动类-连接字符串" class="headerlink" title="具体的驱动类   连接字符串"></a>具体的驱动类   连接字符串</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">oracle.jdbc.OracleDriver				jdbc:oracle:thin:@localhost:1521:ORCL</span><br><span class="line">com.mysql.jdbc.Driver		    		        jdbc:mysql://localhost:3306/数据库实例名	</span><br><span class="line">com.microsoft.sqlserver.jdbc.SQLServerDriver		jdbc:microsoft:sqlserver:localhost:1433;database=数据库的实例名</span><br></pre></td></tr></table></figure>
+
+<h1 id="版本的坑"><a href="#版本的坑" class="headerlink" title="版本的坑"></a>版本的坑</h1><p>private static final String URL = “jdbc:mysql://localhost:3306/test?useUnicode = true&amp;characterEncoding = utf-8&amp;useSSL = false&amp;serverTimezone = GMT”;<br>connection 产生stmt = connection.createStatement();</p>
+<h5 id="套路"><a href="#套路" class="headerlink" title="套路"></a>套路</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">try&#123;</span><br><span class="line">a.加载驱动类Class.forName(<span class="string">"具体驱动类"</span>)；</span><br><span class="line">b.与数据库建立链接connection= DriverManeger.getConnection(...);</span><br><span class="line">c.通过connection,获取操作数据库的对象（Statement\prepareStatement\ callablestatement）</span><br><span class="line">stmt = connection.createStatement();</span><br><span class="line">d.(查询)处理结果集rs=pstmt.executeQuery()</span><br><span class="line"><span class="keyword">while</span>(re.next())&#123;rs.getXxx(..);&#125;</span><br><span class="line">&#125;catch(ClassNotFoundException e)&#123;...&#125;</span><br><span class="line">catch(SQLException e)&#123;&#125;</span><br><span class="line">catch(Exception e )&#123;&#125;</span><br><span class="line">finally&#123;</span><br><span class="line">	//打开顺序，与关闭顺序相反</span><br><span class="line">	<span class="keyword">if</span>(rs!=null)rs.close();</span><br><span class="line">	<span class="keyword">if</span>(stmt!=null)stmt.close();</span><br><span class="line">	<span class="keyword">if</span>(connection=null)connection.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="Statement-操作数据库："><a href="#Statement-操作数据库：" class="headerlink" title="Statement 操作数据库："></a>Statement 操作数据库：</h5><p>增删改：executeUpdate();<br>查询：executeQuery();<br>ResultSet:保存结果集<br>next():光标下移，判断是否有下一条数据；<br>previous():true/false<br>getXXX(字段名|位置):获取具体的字段值</p>
+<p>PreparedStatement操作数据库：<br>public interface PreparedStatement extends Statement</p>
+<p>PrepareStatement和Statement 的区别：</p>
+<p>Statement后写sql 语句  sql       executeUpdate(sql)</p>
+<p>PrepareStatement 先面写sql语句    （预编译）</p>
+<p>PrepareStatement可以用占位符，后面再去赋值</p>
+<p>推荐使用PrepareStatement   可以方式SQL 注入</p>
+<h5 id="2-CallableStatement-调用-存储过程、存储函数"><a href="#2-CallableStatement-调用-存储过程、存储函数" class="headerlink" title="2.CallableStatement:调用 存储过程、存储函数"></a>2.CallableStatement:调用 存储过程、存储函数</h5><p>（connection.prepareCall(存贮过程或者函数的名字)）、<br>参数格式：<br>存储过程：（无返回值return 用Out参数替代）<br>    {call     存储过程名（参数列表）}<br>存储函数：（有返回值return）：<br>    {？=call 存储函数名（函数列表）}</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create or replace procedure addTwoNum(num1 <span class="keyword">in</span> number,num2 <span class="keyword">in</span> number,result out number)</span><br><span class="line">as</span><br><span class="line">begin</span><br><span class="line">	result:=num1+num2;</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+<h5 id="JDBC-调用存储函数的过程："><a href="#JDBC-调用存储函数的过程：" class="headerlink" title="JDBC 调用存储函数的过程："></a>JDBC 调用存储函数的过程：</h5><p>a.产生调用存储函数的对象 (CallableStatement) cstmt=connection.prepareCall(“…”);<br>b.通过setXxx()处理 输出参数值 cstmt.setInt(1,30);<br>c.通过registerOutParameter(..)处理输出参数的类型<br>d.cstmt.execute(); 执行<br>e.接受 输出值（返回值）getXxx（）</p>
+<h5 id="调存储函数："><a href="#调存储函数：" class="headerlink" title="调存储函数："></a>调存储函数：</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create or replace <span class="keyword">function</span> addTwoNum(num1 <span class="keyword">in</span> number,num2 <span class="keyword">in</span> number,result out number)</span><br><span class="line">as</span><br><span class="line">begin</span><br><span class="line">	result:=num1+num2;</span><br><span class="line">	<span class="built_in">return</span> result;</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JDBC-Java-Datebase-Connectivity"><span class="toc-text">JDBC:Java Datebase Connectivity</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JDBC-API-的主要功能："><span class="toc-text">JDBC  API  的主要功能：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#具体的驱动类-连接字符串"><span class="toc-text">具体的驱动类   连接字符串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#版本的坑"><span class="toc-text">版本的坑</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#套路"><span class="toc-text">套路</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Statement-操作数据库："><span class="toc-text">Statement 操作数据库：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-CallableStatement-调用-存储过程、存储函数"><span class="toc-text">2.CallableStatement:调用 存储过程、存储函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#JDBC-调用存储函数的过程："><span class="toc-text">JDBC 调用存储函数的过程：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#调存储函数："><span class="toc-text">调存储函数：</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+  </div>
+</aside>
+  
+  
+    <div class="passage-tags">
+     
+      <a href="/blog/tags/jdbc-java/"><i class="fa fa-tags"></i>jdbc java</a>
+    
+    </div>
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">博客推荐</h5>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self"></a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="http://baidu.com/" target="_blank">百度</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">系列教程</h5>
+          
+            <span class="site-footer-item">
+              <a href="#" target="_self">webpack4系列教程</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="#" target="_self">设计模式手册</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">抓到我</h5>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self">掘金</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self">思否</a>
+            </span>
+          
+        </div>
+      
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: 
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <div class="site-layer-input-choose">
+          <a href="javascript:void(0);" title="Change Search Engine">Google</a>
+        </div>
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      
+        <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+          
+            <div>
+              <img src="/blog/images/wechat.png" alt="WeChat">
+              
+                <p>WeChat</p>
+              
+            </div>
+          
+            <div>
+              <img src="/blog/images/alipay.png" alt="AliPay">
+              
+                <p>AliPay</p>
+              
+            </div>
+          
+        </div>
+      
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="/blog/passages/Mybatis/" data-enable="true">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/blog/passages/My-New-Post/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    
+      <a href="javascript:void(0);" id="site-reward">
+        <i class="fa fa-thumbs-up"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+    <a id="share-btn-twitter" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+  
+  
+    <a id="share-btn-facebook" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-facebook"></i>
+    </a>
+  
+  
+    <a id="share-btn-weibo" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-weibo"></i>
+    </a>
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+
+
+
+
+
+    
+  </body>
+</html>

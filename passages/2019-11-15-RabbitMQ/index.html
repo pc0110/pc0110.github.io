@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+  
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta name="author" content="xxx">
+  
+  
+  <title>2019-11-15 RabbitMQ | Hexo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="RabbitMQ,消息队列,">
+  
+
+  
+  <meta name="description" content="xxx">
+
+  
+
+  
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+  
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"MDoK06tUeJNe9gUQnRye15hO-gzGzoHsz","appkey":"c0Irl5sjfr5NqD3wIbJrMCDA","comment":true,"count":true},
+    welcome: {"enable":false,"interval":30},
+    start_time: "2019-10-16",
+    passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
+    is_post: true,
+    lock: false,
+    author: "xxx",
+    share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/blog/"
+  };
+</script>
+
+  <script src="/blog/vendor/sha256.min.js"></script>
+<script src="/blog/js/auth.js"></script>
+<script src="/blog/js/index.js"></script>
+<script src="/blog/vendor/qrcode.min.js"></script>
+
+  
+    <link rel="icon" href="/blog/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/blog/images/touch-icon.png">
+  
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/blog/css/index.css">
+<link rel="stylesheet" href="/blog/styles/components/highlight/highlight.css">
+
+  
+</head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/blog/">xxx</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | 不要忘记，你依然是个菜鸡！</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/blog/" target="_self">首页</a>
+      
+        <a href="/blog/archives/" target="_self">归档</a>
+      
+        <a href="/blog/tags/" target="_self">标签</a>
+      
+        <a href="/blog/categories/" target="_self">分类</a>
+      
+        <a href="/blog/friends/" target="_self">友链</a>
+      
+        <a href="/blog/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/hahahashiqi/" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/blog/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/friends/" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-11-15
+    </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    2019-11-15 RabbitMQ
+  </h1>
+  
+  <article class="passage-article">
+    <h1 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h1><p>RabbitMQ即一个消息队列，主要来实现应用程序的异步和解耦，同时也能起到消息缓冲，消息分发的作用</p>
+<h4 id="传统模式"><a href="#传统模式" class="headerlink" title="传统模式"></a>传统模式</h4><p>这个流程，全部在主线程完成，注册-》入库-》发送邮件-》发送短信，由于都在主线程，所以要等待每一步完成才能继续执行。由于每一步的操作时间响应时间不固定，所以主线程的请求耗时可能会非常长，如果请求过多，会导致IIS站点巨慢，排队请求，甚至宕机，严重影响用户体验。</p>
+<h4 id="常用方式"><a href="#常用方式" class="headerlink" title="常用方式"></a>常用方式</h4><p>这个流程是主线程只做耗时非常短的入库操作，发送邮件和发送短信，会开启2个异步线程，扔进去并行执行，主线程不管，继续执行后续的操作，这种处理方式要远远好过第一种处理方式，极大的增强了请求响应速度，用户体验良好。缺点是，由于异步线程里的操作都是很耗时间的操作，一个请求要开启2个线程，而一台标准配置的ECS服务器支撑的并发线程数大概在800左右，假设一个线程在10秒做完，这个单个服务器最多能支持400个请求的并发，后面的就要排队。出现这种情况，就要考虑增加服务器做负载，尴尬的增加成本。</p>
+<h4 id="RabbitMQ-1"><a href="#RabbitMQ-1" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h4><p>这个流程是，主线程依旧处理耗时低的入库操作，然后把需要处理的消息写进消息队列中，这个写入耗时可以忽略不计，非常快，然后，独立的发邮件子系统，和独立的发短信子系统，同时订阅消息队列，进行单独处理。处理好之后，向队列发送ACK确认，消息队列整条数据删除。这个流程也是现在各大公司都在用的方式，以SOA服务化各个系统，把耗时操作，单独交给独立的业务系统，通过消息队列作为中间件，达到应用解耦的目的，并且消耗的资源很低，单台服务器能承受更大的的并发请求</p>
+<h1 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h1><p>对于消息队列：我们一般知道有三个概念：发消息者、队列、收消息者，RabbitMQ在这个基本概念之上，多做了一层抽象，在发消息这和队列之间，加入了交换器这样发消息者和队列就没有直接联系，转而变成发消息者吧消息给交换器，交换器根据调度策略再把消息传给队列</p>
+<h1 id="交换机"><a href="#交换机" class="headerlink" title="交换机"></a>交换机</h1><p>交换机的功能主要是接收消息并且转发到绑定的队列</p>
+<p>交换机类型Direct类型、Topoc类型、Headers类型、和Fanout类型<br>Direct 是RabbitMQ默认的交换机模式,也是最简单的模式.即创建消息队列的时候,指定一个BindingKey.当发送者发送消息的时候,指定对应的Key.当Key和消息队列的BindingKey一致的时候,消息将会被发送到该消息队列中。</p>
+<p>Topic 转发信息主要是依据通配符,队列和交换机的绑定主要是依据一种模式(通配符+字符串),而当发送消息的时候,只有指定的Key和该模式相匹配的时候,消息才会被发送到该消息队列中。</p>
+<p>Headers是根据一个规则进行匹配,在消息队列和交换机绑定的时候会指定一组键值对规则,而发送消息的时候也会指定一组键值对规则,当两组键值对规则相匹配的时候,消息会被发送到匹配的消息队列中。</p>
+<p>Fanout 是路由广播的形式,将会把消息发给绑定它的全部队列,即便设置了key,也会被忽略。</p>
+
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#RabbitMQ"><span class="toc-text">RabbitMQ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#传统模式"><span class="toc-text">传统模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#常用方式"><span class="toc-text">常用方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RabbitMQ-1"><span class="toc-text">RabbitMQ</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#消息队列"><span class="toc-text">消息队列</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#交换机"><span class="toc-text">交换机</span></a></li></ol>
+  </div>
+</aside>
+  
+  
+    <div class="passage-tags">
+     
+      <a href="/blog/tags/RabbitMQ/"><i class="fa fa-tags"></i>RabbitMQ</a>
+     
+      <a href="/blog/tags/消息队列/"><i class="fa fa-tags"></i>消息队列</a>
+    
+    </div>
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">博客推荐</h5>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self"></a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="http://baidu.com/" target="_blank">百度</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">系列教程</h5>
+          
+            <span class="site-footer-item">
+              <a href="#" target="_self">webpack4系列教程</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="#" target="_self">设计模式手册</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">抓到我</h5>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self">掘金</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self">思否</a>
+            </span>
+          
+        </div>
+      
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: 
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <div class="site-layer-input-choose">
+          <a href="javascript:void(0);" title="Change Search Engine">Google</a>
+        </div>
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      
+        <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+          
+            <div>
+              <img src="/blog/images/wechat.png" alt="WeChat">
+              
+                <p>WeChat</p>
+              
+            </div>
+          
+            <div>
+              <img src="/blog/images/alipay.png" alt="AliPay">
+              
+                <p>AliPay</p>
+              
+            </div>
+          
+        </div>
+      
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="/blog/passages/2019-11-22-微服务/" data-enable="true">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/blog/passages/Springboot/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    
+      <a href="javascript:void(0);" id="site-reward">
+        <i class="fa fa-thumbs-up"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+    <a id="share-btn-twitter" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+  
+  
+    <a id="share-btn-facebook" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-facebook"></i>
+    </a>
+  
+  
+    <a id="share-btn-weibo" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-weibo"></i>
+    </a>
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+
+
+
+
+
+    
+  </body>
+</html>

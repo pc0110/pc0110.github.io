@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+  
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta name="author" content="xxx">
+  
+  
+  <title>SSM | Hexo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="SSM,">
+  
+
+  
+  <meta name="description" content="xxx">
+
+  
+
+  
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+  
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"MDoK06tUeJNe9gUQnRye15hO-gzGzoHsz","appkey":"c0Irl5sjfr5NqD3wIbJrMCDA","comment":true,"count":true},
+    welcome: {"enable":false,"interval":30},
+    start_time: "2019-10-16",
+    passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
+    is_post: true,
+    lock: false,
+    author: "xxx",
+    share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/blog/"
+  };
+</script>
+
+  <script src="/blog/vendor/sha256.min.js"></script>
+<script src="/blog/js/auth.js"></script>
+<script src="/blog/js/index.js"></script>
+<script src="/blog/vendor/qrcode.min.js"></script>
+
+  
+    <link rel="icon" href="/blog/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/blog/images/touch-icon.png">
+  
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/blog/css/index.css">
+<link rel="stylesheet" href="/blog/styles/components/highlight/highlight.css">
+
+  
+</head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/blog/">xxx</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | 不要忘记，你依然是个菜鸡！</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/blog/" target="_self">首页</a>
+      
+        <a href="/blog/archives/" target="_self">归档</a>
+      
+        <a href="/blog/tags/" target="_self">标签</a>
+      
+        <a href="/blog/categories/" target="_self">分类</a>
+      
+        <a href="/blog/friends/" target="_self">友链</a>
+      
+        <a href="/blog/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/hahahashiqi/" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/blog/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/friends/" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-10-25
+    </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    SSM
+  </h1>
+  
+  <article class="passage-article">
+    <h1 id="SSM框架"><a href="#SSM框架" class="headerlink" title="SSM框架"></a>SSM框架</h1><p>Spring+SpringMVC+Mybatis<br>1.Spring+Mbatis:需要整合：将MyBatis的SqlSessionFactory交给Spring</p>
+<p>思路：<br>SqlSessionFactory-&gt; SqlSession-&gt;StudentMapper-&gt;CRUD<br>MyBatis最终是通过SqlSessionFactory来操作数据库，就是将MyBatis的SqlSessionFactory交给Spring</p>
+<h4 id="1-jar包"><a href="#1-jar包" class="headerlink" title="1.jar包"></a>1.jar包</h4><p>Mybatis-spring.jar  spring-tx.jar spring-jdbc.jar  spring-expression.jar<br>spring-context-support.jar spring-core.jar<br>spring-context.jar spring-beans.jar spring-aop.jar spring-web.jar commons-logging.jar commons-dbcp.jar  ojdbc.jar mybatis.jar log4j.jar commons-pool.jar </p>
+<h4 id="2-类-表："><a href="#2-类-表：" class="headerlink" title="2.类-表："></a>2.类-表：</h4><h4 id="3-MyBatis配置文件："><a href="#3-MyBatis配置文件：" class="headerlink" title="3.MyBatis配置文件："></a>3.MyBatis配置文件：</h4><h4 id="4-通过mapper-xml-将类和表建立起映射关系"><a href="#4-通过mapper-xml-将类和表建立起映射关系" class="headerlink" title="4.通过mapper.xml 将类和表建立起映射关系"></a>4.通过mapper.xml 将类和表建立起映射关系</h4><h4 id="5-Spring的配置文件："><a href="#5-Spring的配置文件：" class="headerlink" title="5.Spring的配置文件："></a>5.Spring的配置文件：</h4><p>通过ContextconfigLocation在web.xml文件中配置Spring的配置文件</p>
+<h1 id="applicationContext-xml"><a href="#applicationContext-xml" class="headerlink" title="applicationContext.xml"></a>applicationContext.xml</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;</span><br><span class="line">       xmlns:jdbc=&quot;http://www.springframework.org/schema/jdbc&quot;</span><br><span class="line">       xmlns:p=&quot;http://www.springframework.org/schema/p&quot;</span><br><span class="line">       xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;</span><br><span class="line">       xsi:schemaLocation=&quot;http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd</span><br><span class="line">		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd</span><br><span class="line">		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd</span><br><span class="line">		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+
+<!-- 数据库连接信息的配置文件 -->
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;context:property-placeholder location=&quot;classpath:jdbc.properties&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<!-- 数据库连接池 -->
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;dataSource&quot; class=&quot;org.apache.commons.dbcp.BasicDataSource&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 指定基本信息 ：jdbc的驱动名、url、数据库名字、密码--&gt;</span><br><span class="line">		&lt;property name=&quot;driverClass&quot; value=&quot;$&#123;driverClass&#125;&quot;&gt;&lt;/property&gt;</span><br><span class="line">		&lt;property name=&quot;jdbcUrl&quot; value=&quot;$&#123;jdbcUrl&#125;&quot;&gt;&lt;/property&gt;</span><br><span class="line">		&lt;property name=&quot;user&quot; value=&quot;$&#123;username&#125;&quot;&gt;&lt;/property&gt;</span><br><span class="line">		&lt;property name=&quot;password&quot; value=&quot;$&#123;password&#125;&quot;&gt;&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--初始化时获取三个连接，取值应在minPoolSize与maxPoolSize之间。Default: 3 --&gt;</span><br><span class="line">&lt;!-- 指定连接池中保留的最大连接数. Default:15--&gt;  </span><br><span class="line">        &lt;property name=&quot;maxPoolSize&quot; value=&quot;$&#123;jdbc.maxPoolSize&#125;&quot;/&gt;  </span><br><span class="line"></span><br><span class="line">&lt;!-- 指定连接池中保留的最小连接数--&gt;  </span><br><span class="line">        &lt;property name=&quot;minPoolSize&quot; value=&quot;$&#123;jdbc.minPoolSize&#125;&quot;/&gt; </span><br><span class="line"></span><br><span class="line">&lt;!-- 指定连接池的初始化连接数  取值应在minPoolSize 与 maxPoolSize 之间.Default:3--&gt;  </span><br><span class="line">        &lt;property name=&quot;initialPoolSize&quot; value=&quot;$&#123;jdbc.initialPoolSize&#125;&quot;/&gt;</span><br><span class="line">		</span><br><span class="line">&lt;!-- 当连接池中的连接耗尽的时候c3p0一次同时获取的连接数. Default:3--&gt;  </span><br><span class="line">        &lt;property name=&quot;acquireIncrement&quot; value=&quot;$&#123;jdbc.acquireIncrement&#125;&quot;/&gt;  </span><br><span class="line"></span><br><span class="line"> &lt;!-- JDBC的标准,用以控制数据源内加载的PreparedStatements数量。但由于预缓存的statements属于单个</span><br><span class="line">            connection而不是整个连接池所以设置这个参数需要考虑到多方面的因数.如果maxStatements与</span><br><span class="line">            maxStatementsPerConnection均为0,则缓存被关闭。Default:0--&gt;  </span><br><span class="line"></span><br><span class="line">        &lt;property name=&quot;maxStatements&quot; value=&quot;$&#123;jdbc.maxStatements&#125;&quot;/&gt;         </span><br><span class="line">&lt;!-- 最大空闲时间,$&#123;jdbc.maxIdleTime&#125;(60)秒内未使用则连接被丢弃。若为0则永不丢弃。 Default:0--&gt;  </span><br><span class="line">        &lt;property name=&quot;maxIdleTime&quot; value=&quot;$&#123;jdbc.maxIdleTime&#125;&quot;/&gt; </span><br><span class="line"></span><br><span class="line">&lt;!-- 检查数据库连接池中空闲连接的间隔时间，单位是分，默认值：240，如果要取消则设置为0 --&gt; </span><br><span class="line">        &lt;property name=&quot;idleConnectionTestPeriod&quot; value=&quot;$&#123;jdbc.idleConnectionTestPeriod&#125;&quot;/&gt; </span><br><span class="line"></span><br><span class="line">&lt;!-- maxStatementsPerConnection定义了连接池内单个连接所拥有的最大缓存statements数。</span><br><span class="line">             Default: 0 --&gt;</span><br><span class="line">		&lt;property name=&quot;maxStatementsPerConnection&quot; value=&quot;5&quot;&gt;&lt;/property&gt;  </span><br><span class="line">  </span><br><span class="line">&lt;!-- 数据库连接池过期时间应小于等于mysql的过期时间和mycat的过期时间 --&gt;</span><br><span class="line">        &lt;property name=&quot;idleMaxAge&quot; value=&quot;20&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 每个分区最大的连接数 --&gt;</span><br><span class="line">        &lt;property name=&quot;maxConnectionsPerPartition&quot; value=&quot;100&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 每个分区最小的连接数 --&gt;</span><br><span class="line">        &lt;property name=&quot;minConnectionsPerPartition&quot; value=&quot;20&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 分区数 ，默认值2，最小1，推荐3-4，视应用而定 --&gt;</span><br><span class="line">        &lt;property name=&quot;partitionCount&quot; value=&quot;1&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 每次去拿数据库连接的时候一次性要拿几个,默认值：2 --&gt;</span><br><span class="line">        &lt;property name=&quot;acquireIncrement&quot; value=&quot;2&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 缓存prepared statements的大小，默认值：0 --&gt;</span><br><span class="line">        &lt;property name=&quot;statementsCacheSize&quot; value=&quot;0&quot; /&gt;</span><br><span class="line">        &lt;property name=&quot;connectionTimeoutInMs&quot; value=&quot;100&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 每个分区释放链接助理进程的数量，默认值：3，除非你的一个数据库连接的时间内做了很多工作，</span><br><span class="line">            不然过多的助理进程会影响你的性能 --&gt;</span><br><span class="line">        &lt;property name=&quot;releaseHelperThreads&quot; value=&quot;3&quot; /&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+
+<!-- 引入事务的配置 -->
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;transactionManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+
+<!-- 整合 mybatis -->
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;</span><br><span class="line">        &lt;!-- 依赖注入数据源，正是上文定义的dataSource --&gt;</span><br><span class="line">        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;</span><br><span class="line">        &lt;!-- 文件映射器，指定类文件 --&gt;</span><br><span class="line">        &lt;property name=&quot;configLocation&quot; value=&quot;classpath:/config/sqlmybatis.xml&quot; /&gt;</span><br><span class="line">        &lt;!-- 自动扫描mapping.xml文件    指定mybatis的mapper配置文件   --&gt;  </span><br><span class="line">         &lt;property name=&quot;mapperLocations&quot; value=&quot;classpath:/mapper/**Mapper.xml&quot;&gt;&lt;/property&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+
+<!-- 初始化数据库，是否在服务启动时执行schema.sql -->
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<!--  mybatis自动扫描 将Mapper接口生成代理注入到Spring -->
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;basePackage&quot; value=&quot;com.cn21.calendar.dao&quot; /&gt;&lt;!-- 路径 --&gt;</span><br><span class="line">    &lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+
+<!--配置aop的切面-->
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"> &lt;tx:advice id=&quot;txAdvice&quot; transaction-manager=&quot;transactionManager&quot;&gt;</span><br><span class="line">         &lt;!-- 配置事务属性 --&gt;</span><br><span class="line">         &lt;tx:attributes&gt;</span><br><span class="line">             &lt;!-- 添加事务管理的方法 --&gt;</span><br><span class="line">             &lt;tx:method name=&quot;save*&quot; propagation=&quot;REQUIRED&quot;/&gt;&lt;!-- required 要求 --&gt;</span><br><span class="line">             &lt;tx:method name=&quot;delete*&quot; propagation=&quot;REQUIRED&quot;/&gt;</span><br><span class="line">             &lt;tx:method name=&quot;update*&quot; propagation=&quot;REQUIRED&quot;/&gt;</span><br><span class="line">             &lt;tx:method name=&quot;select*&quot; read-only=&quot;true&quot;/&gt;</span><br><span class="line">         &lt;/tx:attributes&gt;</span><br><span class="line">     &lt;/tx:advice&gt;</span><br><span class="line">```   </span><br><span class="line"></span><br><span class="line">&lt;!-- spring自动扫描：扫描用Service，和Repository注解申明的受管bean --&gt;</span><br><span class="line">Spring配置文件里面写数据源和Mapper.xml文件</span><br><span class="line">之前使用的是mybatis的conf.xml文件-&gt;SqlSessionFactory 现在整合 的时候 需要通过Spring管理SqlSessionFactory 因此产生SqlSessionFactory产生的信息放入Spring的配置信息</span><br><span class="line">（替代之前的Mybatis 的配置文件）</span><br><span class="line">在SpringIoc容器中创建Mybatis的核心类SqlSessionFactory</span><br></pre></td></tr></table></figure>
+
+<p>&lt;bean id=”sqlSessionFactory class=”org.mybatis.spring.SqlSessionFactoryBean”&gt;<br>    <property name="dataSourse" ref="dataSource"><br>    </property></p>
+<!--加载mapper路径->
+    <property name="maapperLocations" value="org/hhh/mapper/*.xml"></property>
+</bean>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">加载配置文件，配置数据库，在SpringIOC容器中创建Mybatis的核心类SpringSessionFactory:数据源和MyBatis的conf.xml</span><br><span class="line">## 6.使用Spring-Mybatis整合产物开发程序</span><br><span class="line">不在需要conf.xml文件，相应的把数据源通过配置文件db.properties的方式配置到Spring的配置文件中</span><br><span class="line">目标：通过spring产生mybatis最终操作需要的 动态mapper对象（studentMapper对象）</span><br><span class="line">Spring产生 动态mapper对象有三种方法：DAO实现类 继承 SqlSessionDaoSupport 类</span><br><span class="line">SqlSessionDaoSupport类提供了一个属性Sqlsession</span><br><span class="line">## Spring-SpringMVC:就是将SpringMVC各自配置一遍</span><br><span class="line">1.加入mvc所需要的jar</span><br><span class="line">spring-webmvc.jar</span><br><span class="line">2.配置springmvc</span><br><span class="line">web.xml:dispatcherServlet</span><br><span class="line">3.编写springMVC配置文件：</span><br><span class="line">applocationContext-controller.xml:配置视图解析器、基础配置</span><br><span class="line"></span><br><span class="line">&lt;!--    配置视图解析器--&gt;</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;
+    &lt;property name=&quot;prefix&quot; value=&quot;/views/&quot;&gt;&lt;/property&gt;
+    &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--    配置基础的配置--&gt;</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;mvc:annotation-driven&gt;&lt;/mvc:annotation-driven&gt;</code></pre><pre><code></code></pre>-->
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SSM框架"><span class="toc-text">SSM框架</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-jar包"><span class="toc-text">1.jar包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-类-表："><span class="toc-text">2.类-表：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-MyBatis配置文件："><span class="toc-text">3.MyBatis配置文件：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-通过mapper-xml-将类和表建立起映射关系"><span class="toc-text">4.通过mapper.xml 将类和表建立起映射关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Spring的配置文件："><span class="toc-text">5.Spring的配置文件：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#applicationContext-xml"><span class="toc-text">applicationContext.xml</span></a></li></ol>
+  </div>
+</aside>
+  
+  
+    <div class="passage-tags">
+     
+      <a href="/blog/tags/SSM/"><i class="fa fa-tags"></i>SSM</a>
+    
+    </div>
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">博客推荐</h5>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self"></a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="http://baidu.com/" target="_blank">百度</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">系列教程</h5>
+          
+            <span class="site-footer-item">
+              <a href="#" target="_self">webpack4系列教程</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="#" target="_self">设计模式手册</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">抓到我</h5>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self">掘金</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self">思否</a>
+            </span>
+          
+        </div>
+      
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: 
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <div class="site-layer-input-choose">
+          <a href="javascript:void(0);" title="Change Search Engine">Google</a>
+        </div>
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      
+        <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+          
+            <div>
+              <img src="/blog/images/wechat.png" alt="WeChat">
+              
+                <p>WeChat</p>
+              
+            </div>
+          
+            <div>
+              <img src="/blog/images/alipay.png" alt="AliPay">
+              
+                <p>AliPay</p>
+              
+            </div>
+          
+        </div>
+      
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="/blog/passages/Redis/" data-enable="true">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/blog/passages/JVM/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    
+      <a href="javascript:void(0);" id="site-reward">
+        <i class="fa fa-thumbs-up"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+    <a id="share-btn-twitter" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+  
+  
+    <a id="share-btn-facebook" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-facebook"></i>
+    </a>
+  
+  
+    <a id="share-btn-weibo" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-weibo"></i>
+    </a>
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+
+
+
+
+
+    
+  </body>
+</html>

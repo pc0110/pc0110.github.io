@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+  
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta name="author" content="xxx">
+  
+  
+  <title>paging | Hexo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="page java,">
+  
+
+  
+  <meta name="description" content="xxx">
+
+  
+
+  
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+  
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"MDoK06tUeJNe9gUQnRye15hO-gzGzoHsz","appkey":"c0Irl5sjfr5NqD3wIbJrMCDA","comment":true,"count":true},
+    welcome: {"enable":false,"interval":30},
+    start_time: "2019-10-16",
+    passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
+    is_post: true,
+    lock: false,
+    author: "xxx",
+    share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/blog/"
+  };
+</script>
+
+  <script src="/blog/vendor/sha256.min.js"></script>
+<script src="/blog/js/auth.js"></script>
+<script src="/blog/js/index.js"></script>
+<script src="/blog/vendor/qrcode.min.js"></script>
+
+  
+    <link rel="icon" href="/blog/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/blog/images/touch-icon.png">
+  
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/blog/css/index.css">
+<link rel="stylesheet" href="/blog/styles/components/highlight/highlight.css">
+
+  
+</head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/blog/">xxx</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | 不要忘记，你依然是个菜鸡！</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/blog/" target="_self">首页</a>
+      
+        <a href="/blog/archives/" target="_self">归档</a>
+      
+        <a href="/blog/tags/" target="_self">标签</a>
+      
+        <a href="/blog/categories/" target="_self">分类</a>
+      
+        <a href="/blog/friends/" target="_self">友链</a>
+      
+        <a href="/blog/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/hahahashiqi/" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/blog/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/friends/" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-10-16
+    </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    paging
+  </h1>
+  
+  <article class="passage-article">
+    <h1 id="1-分页"><a href="#1-分页" class="headerlink" title="1.分页"></a>1.分页</h1><p>分析 要实现分页要知道数据是在哪里 开始和结束</p>
+<p>假设每条显示10条数据</p>
+<h3 id="mysql-和-ORACLE的-SQL-语句不太一样"><a href="#mysql-和-ORACLE的-SQL-语句不太一样" class="headerlink" title="mysql  和 ORACLE的 SQL 语句不太一样"></a>mysql  和 ORACLE的 SQL 语句不太一样</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">msyql 从0开始计数  其中有Limit关键字（Oracle没有）</span><br><span class="line"></span><br><span class="line">	select * from student limit  页数*10，10；</span><br><span class="line"></span><br><span class="line">Oracle 是从1开始的 </span><br><span class="line">	select * from student where sno&gt;=(n-1)*10+1 and sno&lt;=n*10;(此种写法是有漏洞的，ID值必须是连续的，假如中间有学生退学之类的情况，中间就会出现空位，存在BUG)</span><br><span class="line">	select rownum,t.* from student t where sno&lt;=(n-1)*10+1 and sno&gt;=n*10;这种写法会根绝rownum列进行排序，但是伪列的顺序会被打乱、rownum只能查询小于的数据不能查询大于的数据</span><br><span class="line">	解决方案：分开使用，先只排序，</span><br><span class="line">	a.select s.* from student s order by sno asc ;</span><br><span class="line">	b.select  rownum,t.*from (select s.* from student s order by sno asc) t;</span><br><span class="line">	c.select * from (select  rownum r,t.*from (select s.* from student s order by sno asc) t) where r&gt;= (n-1)*10+1and r&lt;=n*10;//oracle 的分页查询语句</span><br><span class="line"></span><br><span class="line">sql server 的分页查询：</span><br><span class="line">	sql server 2003: top</span><br><span class="line">	select top 页面数 * from student where id not in (</span><br><span class="line">				select top (页面数-1)*页面大小 id from student order by sno sec);</span><br><span class="line"></span><br><span class="line">	sql server 2010:</span><br><span class="line">	offset fetch next only </span><br><span class="line"></span><br><span class="line">	select * from student order bu sno </span><br><span class="line">	offset(页数-1)*页面大小-1 fetch next 页面大小 rows only;</span><br></pre></td></tr></table></figure>
+
+<h4 id="分页实现："><a href="#分页实现：" class="headerlink" title="分页实现："></a>分页实现：</h4><p>封装到一个实体类里面</p>
+<h2 id="5个变量（属性）"><a href="#5个变量（属性）" class="headerlink" title="5个变量（属性）"></a>5个变量（属性）</h2><p>1.数据总量<br>2.页面大小<br>3.总页数<br>4.当前页<br>5.当前页的对象集合（实体类集合）：每页    所显示的所有数据</p>
+<h6 id="存放路径"><a href="#存放路径" class="headerlink" title="存放路径"></a>存放路径</h6><p>为了防止上传目录丢失 有两种办法 一种是把上传目录放到非tomcat 目录，指定虚拟目录 </p>
+<h1 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h1><p>当你重启服务器的时候你新建的存放文件的文件夹会某明奇妙的消失，这和tomcat 和java 编译的class 有关，有股源文件有修改的话，他会把文件重新部署一边，然而里面的文件就会被重写</p>
+<h2 id="熟练使用DeBug-进行调试程序"><a href="#熟练使用DeBug-进行调试程序" class="headerlink" title="熟练使用DeBug 进行调试程序"></a>熟练使用DeBug 进行调试程序</h2><p>打一个或多个断点<br>用debug开启服务<br>F5：跳入方法<br>F6：向下逐行调试<br>F7：跳出方法<br>F8：直接跳转到下一个断点</p>
+<h1 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h1><p>//设置消息头</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">response.addHeader(&quot;content-Type&quot;, &quot;application/octet-stream&quot;);</span><br><span class="line">response.addHeader(&quot;content-Disposition&quot;, &quot;attachment;filename=&quot;);</span><br><span class="line">//解决中文文件名乱码</span><br><span class="line">1.Edge</span><br><span class="line">+filename++URLEncoder.encode(filename,&quot;utf-8&quot;)</span><br><span class="line">2.Fire Fox</span><br><span class="line">给文件名加上前缀和后缀</span><br><span class="line">前缀 =?UTF-8?B?</span><br><span class="line">Base64.encode</span><br><span class="line">String 构造方法</span><br><span class="line">后缀 ?=</span><br><span class="line">示例：response.addHeader(&quot;content-Disposition&quot;,&quot;attchment;filename==?UTF-8?B?&quot;+new String(Base64.encodeBase64(filename.getBases(&quot;UTF-8&quot;)))+&quot;?=&quot;);</span><br><span class="line">对于不同的浏览器设置不同的编码格式</span><br><span class="line">String agent = resquest.getHead(&quot;User-Agent&quot;);</span><br><span class="line">if(agent.toLowerCase().indexOff(firefox))&#123;</span><br><span class="line">	response.addHeader(&quot;content-Disposition&quot;,&quot;attchment;filename==?UTF-8?B?&quot;+new String(Base64.encodeBase64(filename.getBases(&quot;UTF-8&quot;)))+&quot;?=&quot;);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	response.addHeader(&quot;content-Disposition&quot;, &quot;attachment;filename=&quot;+filename++URLEncoder.encode(filename,&quot;utf-8&quot;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>1.Servlet通过文件的地址，转换成输入存放到Servlet</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">InputStream in = getServletContext().getResourceAsStream(&quot;/res/MIME.png&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>2.Servlet把输入流转换成输出流</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ServletOutputStream out = response.getOutputStream();</span><br></pre></td></tr></table></figure>
+
+<p>3.通过转换得到文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">byte [] bs = new byte[10];  </span><br><span class="line">		int len = -1;</span><br><span class="line">		while((len = in.read(bs))!=-1) &#123;</span><br><span class="line">			out.write(bs,0,len);</span><br><span class="line">		&#125;</span><br><span class="line">		out.close();</span><br><span class="line">		in.close();</span><br></pre></td></tr></table></figure>
+
+
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-分页"><span class="toc-text">1.分页</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql-和-ORACLE的-SQL-语句不太一样"><span class="toc-text">mysql  和 ORACLE的 SQL 语句不太一样</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#分页实现："><span class="toc-text">分页实现：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5个变量（属性）"><span class="toc-text">5个变量（属性）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#存放路径"><span class="toc-text">存放路径</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#坑"><span class="toc-text">坑</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#熟练使用DeBug-进行调试程序"><span class="toc-text">熟练使用DeBug 进行调试程序</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文件下载"><span class="toc-text">文件下载</span></a></li></ol>
+  </div>
+</aside>
+  
+  
+    <div class="passage-tags">
+     
+      <a href="/blog/tags/page-java/"><i class="fa fa-tags"></i>page java</a>
+    
+    </div>
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">博客推荐</h5>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self"></a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="http://baidu.com/" target="_blank">百度</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">系列教程</h5>
+          
+            <span class="site-footer-item">
+              <a href="#" target="_self">webpack4系列教程</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="#" target="_self">设计模式手册</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">抓到我</h5>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self">掘金</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self">思否</a>
+            </span>
+          
+        </div>
+      
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: 
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <div class="site-layer-input-choose">
+          <a href="javascript:void(0);" title="Change Search Engine">Google</a>
+        </div>
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      
+        <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+          
+            <div>
+              <img src="/blog/images/wechat.png" alt="WeChat">
+              
+                <p>WeChat</p>
+              
+            </div>
+          
+            <div>
+              <img src="/blog/images/alipay.png" alt="AliPay">
+              
+                <p>AliPay</p>
+              
+            </div>
+          
+        </div>
+      
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="/blog/passages/SpringMVC/" data-enable="true">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/blog/passages/Mybatis/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    
+      <a href="javascript:void(0);" id="site-reward">
+        <i class="fa fa-thumbs-up"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+    <a id="share-btn-twitter" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+  
+  
+    <a id="share-btn-facebook" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-facebook"></i>
+    </a>
+  
+  
+    <a id="share-btn-weibo" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-weibo"></i>
+    </a>
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+
+
+
+
+
+    
+  </body>
+</html>

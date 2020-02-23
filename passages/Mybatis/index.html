@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+  
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta name="author" content="xxx">
+  
+  
+  <title>Mybatis | Hexo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="mybatis java,">
+  
+
+  
+  <meta name="description" content="xxx">
+
+  
+
+  
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+  
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"MDoK06tUeJNe9gUQnRye15hO-gzGzoHsz","appkey":"c0Irl5sjfr5NqD3wIbJrMCDA","comment":true,"count":true},
+    welcome: {"enable":false,"interval":30},
+    start_time: "2019-10-16",
+    passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
+    is_post: true,
+    lock: false,
+    author: "xxx",
+    share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/blog/"
+  };
+</script>
+
+  <script src="/blog/vendor/sha256.min.js"></script>
+<script src="/blog/js/auth.js"></script>
+<script src="/blog/js/index.js"></script>
+<script src="/blog/vendor/qrcode.min.js"></script>
+
+  
+    <link rel="icon" href="/blog/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/blog/images/touch-icon.png">
+  
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/blog/css/index.css">
+<link rel="stylesheet" href="/blog/styles/components/highlight/highlight.css">
+
+  
+</head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/blog/">xxx</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | 不要忘记，你依然是个菜鸡！</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/blog/" target="_self">首页</a>
+      
+        <a href="/blog/archives/" target="_self">归档</a>
+      
+        <a href="/blog/tags/" target="_self">标签</a>
+      
+        <a href="/blog/categories/" target="_self">分类</a>
+      
+        <a href="/blog/friends/" target="_self">友链</a>
+      
+        <a href="/blog/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/hahahashiqi/" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/blog/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/friends/" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-10-16
+    </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    Mybatis
+  </h1>
+  
+  <article class="passage-article">
+    <h1 id="数据查询语言"><a href="#数据查询语言" class="headerlink" title="数据查询语言"></a>数据查询语言</h1><p>//修改为主键<br>alter table tb_name modify id int auto_increment primary key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">DQL：数据查询语言 		例如：SELECT语句。（一般不会单独归于一类，因为只有一个语句）。</span><br><span class="line">DML ：数据管理语言		例如：INSERT（插入）、UPDATE（修改）、DELETE（删除）语句。</span><br><span class="line">DCL：数据控制语言		例如：GRANT、REVOKE等语句。</span><br><span class="line">DDL：数据定义语言		例如：CREATE、DROP、ALTER等语句。</span><br><span class="line">TCL：事务控制语言 		例如：COMMIT、ROLLBACK等语句。</span><br></pre></td></tr></table></figure>
+
+<p>C: Create<br>R: Read<br>U: Update<br>D：Delete</p>
+<h1 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h1><p>输入参数：parameter</p>
+<h5 id="1-八个基本类型-string"><a href="#1-八个基本类型-string" class="headerlink" title="1.八个基本类型+string"></a>1.八个基本类型+string</h5><p>#{任意值}<br>${value}</p>
+<h5 id="2-对象类型"><a href="#2-对象类型" class="headerlink" title="2.对象类型"></a>2.对象类型</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#&#123;属性名&#125;</span></span><br><span class="line"><span class="variable">$&#123;属性名&#125;</span></span><br><span class="line"><span class="comment">#&#123;&#125;自动给String类型加上‘’（自动类型转换）     #&#123;&#125; </span></span><br><span class="line"><span class="variable">$&#123;&#125;</span>原样输出，但是适合于动态排序（动态字段）     <span class="string">'$&#123;&#125;'</span> </span><br><span class="line">Map&lt;String Object&gt; studentmap = new map&lt;&gt;;</span><br></pre></td></tr></table></figure>
+
+<p>Procedure  存储过程</p>
+<p>jabcType  数据库类型  java类型</p>
+<h1 id="数据库的-环境切换："><a href="#数据库的-环境切换：" class="headerlink" title="数据库的 环境切换："></a>数据库的 环境切换：</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a.environment配置不同的数据库环境</span><br><span class="line">b.配置Provider别名</span><br><span class="line">c.写不同过的SQL语句</span><br><span class="line">d.在mapper.xml文件中写databaseId=<span class="string">"Provider"</span>  （自适应，优先使用带databaseId）</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-注解方式"><a href="#2-注解方式" class="headerlink" title="2.注解方式"></a>2.注解方式</h1><p>推荐使用XML方式<br>a.将sql语句写在接口的方法上@Select(“”)<br>b.将接口的全类名写入mapper,让mybaits知道你的SQL语句是存储在接口中的<br><package name="com.wk.mapper"> (可以将包中的注解 接口 xml 一次性的引入)</package></p>
+<h1 id="3-增删改的返回值问题"><a href="#3-增删改的返回值问题" class="headerlink" title="3.增删改的返回值问题"></a>3.增删改的返回值问题</h1><p>a.返回值可以是void  integer boolean long<br>b.只需要在接口中修改返回值即可</p>
+<h1 id="4-事务自动提交"><a href="#4-事务自动提交" class="headerlink" title="4.事务自动提交"></a>4.事务自动提交</h1><p>a. sqlsessionFactory.opensession()  sqlsession.commit()  //手动提交<br>b.sqlsessionFactory.opensession(true) //自动提交</p>
+<h1 id="5-自增问题"><a href="#5-自增问题" class="headerlink" title="5.自增问题"></a>5.自增问题</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">a.mysql支持自增</span><br><span class="line">b.oracle同过序列模拟实现 create sequence myseq </span><br><span class="line">			increment by 1               //步长	</span><br><span class="line">			start with 1; </span><br><span class="line">序列自带两个属性：</span><br><span class="line">	nextval:下一个值</span><br><span class="line">	currval:当前值</span><br><span class="line">insert into student values(myseq.nextval(),................)</span><br><span class="line">&lt;!--通过oracle的序列化模拟自增--&gt;</span><br><span class="line">方法一：</span><br><span class="line">  	 &lt;insert id=<span class="string">"addStudent"</span> parameterType=<span class="string">"com.wk.entity.Student"</span> databaseId=<span class="string">"oracle"</span>&gt;</span><br><span class="line">     		  &lt;selectKey keyProperty=<span class="string">"stuNo"</span> resultType=<span class="string">"Integer"</span> order=<span class="string">"BEFORE"</span>&gt;</span><br><span class="line">          			 select myseq.nextval from dual;</span><br><span class="line">      		 &lt;/selectKey&gt;</span><br><span class="line">      		 insert into student(stuNo,stuName,stuAge,graName)</span><br><span class="line">       		values (<span class="comment">#&#123;stuNo&#125;,#&#123;stuName&#125;,#&#123;stuAge&#125;,#&#123;graName&#125;)</span></span><br><span class="line">   	&lt;/insert&gt;</span><br><span class="line">方法二：</span><br><span class="line">    &lt;insert id=<span class="string">"addStudent"</span> parameterType=<span class="string">"com.wk.entity.Student"</span> databaseId=<span class="string">"oracle"</span>&gt;</span><br><span class="line">       		&lt;selectKey keyProperty=<span class="string">"stuNo"</span> resultType=<span class="string">"Integer"</span> order=<span class="string">"AFTER"</span>&gt;</span><br><span class="line">           			select myseq.currval from dual;</span><br><span class="line">       		&lt;/selectKey&gt;</span><br><span class="line">       		insert into student(stuNo,stuName,stuAge,graName)</span><br><span class="line">       		values (myseq.nextval,<span class="comment">#&#123;stuName&#125;,#&#123;stuAge&#125;,#&#123;graName&#125;)</span></span><br><span class="line">  	 &lt;/insert&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="6-参数问题："><a href="#6-参数问题：" class="headerlink" title="6.参数问题："></a>6.参数问题：</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">将多个参数封装到一个 对象 中 然后使用该对象传递</span><br><span class="line">	a.再mapper.xml中不用写parameterType</span><br><span class="line">	&lt;inster&gt;</span><br><span class="line">		insert into student(stuno,stuName,stuAge,graName)</span><br><span class="line">		values (<span class="comment">#&#123;arg0&#125;,#&#123;arg1&#125;,#&#123;arg2&#125;,#&#123;arg2&#125;)</span></span><br><span class="line">	&lt;/inster&gt;</span><br><span class="line">	b.可以在 接口中 通过@Param(<span class="string">"sNo"</span>) 指定SQL中参数的名字</span><br><span class="line">	public abstract Integer addStudent (@Param(<span class="string">"sNo"</span>) Integer stuNo),</span><br><span class="line">	&lt;inster&gt;</span><br><span class="line">		insert into student(stuno,stuName,stuAge,graName)</span><br><span class="line">		values (<span class="comment">#&#123;sNo&#125;,.......)</span></span><br><span class="line">	&lt;/inster&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="7-增加null"><a href="#7-增加null" class="headerlink" title="7.增加null"></a>7.增加null</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">oracle:如果是null 则会报 Other	而不是null </span><br><span class="line"></span><br><span class="line">mysql:如果是null则不会报错,没有约束</span><br><span class="line">mybatis中null 是 Other 而 Mysql 可以处理，Oracle 不能处理</span><br><span class="line"></span><br><span class="line">a.Oracle这样处理：&lt;inster&gt;</span><br><span class="line">		 insert into student(stuno,stuName)</span><br><span class="line">		 values (<span class="comment">#&#123;sNo&#125;,#&#123;stuName,jdbcType=NULL&#125;)</span></span><br><span class="line">	           &lt;/inster&gt;</span><br><span class="line"></span><br><span class="line">//注意标签放置的顺序</span><br><span class="line">b.配置mybatis全局配置文件conf.xml</span><br><span class="line">	&lt;settings&gt;</span><br><span class="line">		&lt;settings name = <span class="string">"jdbcTypeForNull"</span> value = <span class="string">"NULL"</span>&gt;</span><br><span class="line">	&lt;settings/&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="8-返回值为Map"><a href="#8-返回值为Map" class="headerlink" title="8.返回值为Map"></a>8.返回值为Map</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=<span class="string">"queryStudentOutByHashMap"</span> parameterType=<span class="string">"int"</span> resultType=<span class="string">"HashMap"</span>&gt;</span><br><span class="line">        		select stuNo <span class="string">"no"</span>,stuName <span class="string">"name"</span>,stuAge <span class="string">"age"</span> from student</span><br><span class="line">         		<span class="built_in">where</span> stuNo = <span class="comment">#&#123;stuNo&#125;</span></span><br><span class="line">                    &lt;/select&gt; </span><br><span class="line">	这其中的stuNo是数据库字段名 ，no是stuNo的别名，用于在map 中get 值时使用。map.get(<span class="string">"no"</span>);</span><br><span class="line">	如果不加别名打印的HashMap 打印的是数据库的字段名</span><br><span class="line"></span><br><span class="line">	@MapKey(<span class="string">"STUNO"</span>) //oracle的元数据（字段名，表名）都是大写</span><br><span class="line">	HashMap&lt;Interger,Student&gt; queryStudentByHashMap();</span><br><span class="line">	</span><br><span class="line">	&lt;select id = <span class="string">"queryStudentByHashMap"</span> resultType =<span class="string">"HashMap"</span> &gt;</span><br><span class="line">		select stnNo,stuName,stuAge from studnet</span><br><span class="line">	&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="逆向工程-QBC"><a href="#逆向工程-QBC" class="headerlink" title="逆向工程 QBC"></a>逆向工程 QBC</h1><p>逆向工程：<br>    表，类，接口，mapper.xml文件 当知道一个的时候，其他三个可以自动生成</p>
+<p>需要的三个包：<br>    mybatis-generator-core.jar,mybatis.jar,ojdbc.jar</p>
+<p>逆向工程的配置文件：<br>    generator.xml </p>
+<p>执行：</p>
+<h1 id="XxxMapper代理对象：MapperProxy对象"><a href="#XxxMapper代理对象：MapperProxy对象" class="headerlink" title="XxxMapper代理对象：MapperProxy对象"></a>XxxMapper代理对象：MapperProxy对象</h1><p>执行增删改查-&gt;M0apperProxy/inkove()–&gt;InvocationHandler:JDK动态代理接口 用到了动态代理模式<br>动态代理模式：增删改查-&gt;代理对象（MapperProxy对象）-&gt;代理对象帮我们“代理执行” 增删改查-&gt;</p>
+<h1 id="四个处理器"><a href="#四个处理器" class="headerlink" title="四个处理器"></a>四个处理器</h1><pre><code>StatementHandler ParameterHandler TypeHandler ResultSetHandler</code></pre><h1 id="自定义插件"><a href="#自定义插件" class="headerlink" title="自定义插件"></a>自定义插件</h1><pre><code>四大核心对象：    StatementHandler ParameterHandler  ResultSetHandler Executor</code></pre><h1 id="通用Mapper"><a href="#通用Mapper" class="headerlink" title="通用Mapper"></a>通用Mapper</h1><p> 主键的属性只能是包装类型Integer Long，不能是基本类型<br>主键策略：有些数据库支持自增，而有些数据库不支持<br>JDBC支持通过getGenerteKeys方法取回主键的情况<br>这种情况需要数据库自增，其次是jdbc支持getGenertekeys方法。<br>常见的如mysql,sqlserver等<br>用法如下：<br>@Id<br>@GeneratedValue(strategy = GenerationType.IDENTITY)<br>Oracle中不支持自增用以下方式进行配置：<br>@Id<br>@KeySql(sql = “select SEQ_ID.nextval from dual”, order = ORDER.BEFORE)<br>private Integer id;</p>
+<p>插入数据时，如果不给主键赋值，是否会回写到对象中</p>
+<p>@Transient//该属性不会进行数据库持久化操作，存在于内存中</p>
+
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#数据查询语言"><span class="toc-text">数据查询语言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基本数据类型"><span class="toc-text">基本数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-八个基本类型-string"><span class="toc-text">1.八个基本类型+string</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-对象类型"><span class="toc-text">2.对象类型</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库的-环境切换："><span class="toc-text">数据库的 环境切换：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-注解方式"><span class="toc-text">2.注解方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-增删改的返回值问题"><span class="toc-text">3.增删改的返回值问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-事务自动提交"><span class="toc-text">4.事务自动提交</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-自增问题"><span class="toc-text">5.自增问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-参数问题："><span class="toc-text">6.参数问题：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-增加null"><span class="toc-text">7.增加null</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-返回值为Map"><span class="toc-text">8.返回值为Map</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#逆向工程-QBC"><span class="toc-text">逆向工程 QBC</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#XxxMapper代理对象：MapperProxy对象"><span class="toc-text">XxxMapper代理对象：MapperProxy对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四个处理器"><span class="toc-text">四个处理器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#自定义插件"><span class="toc-text">自定义插件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#通用Mapper"><span class="toc-text">通用Mapper</span></a></li></ol>
+  </div>
+</aside>
+  
+  
+    <div class="passage-tags">
+     
+      <a href="/blog/tags/mybatis-java/"><i class="fa fa-tags"></i>mybatis java</a>
+    
+    </div>
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">博客推荐</h5>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self"></a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="http://baidu.com/" target="_blank">百度</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">系列教程</h5>
+          
+            <span class="site-footer-item">
+              <a href="#" target="_self">webpack4系列教程</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="#" target="_self">设计模式手册</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">抓到我</h5>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self">掘金</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self">思否</a>
+            </span>
+          
+        </div>
+      
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: 
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <div class="site-layer-input-choose">
+          <a href="javascript:void(0);" title="Change Search Engine">Google</a>
+        </div>
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      
+        <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+          
+            <div>
+              <img src="/blog/images/wechat.png" alt="WeChat">
+              
+                <p>WeChat</p>
+              
+            </div>
+          
+            <div>
+              <img src="/blog/images/alipay.png" alt="AliPay">
+              
+                <p>AliPay</p>
+              
+            </div>
+          
+        </div>
+      
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="/blog/passages/paging/" data-enable="true">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/blog/passages/jdbc/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    
+      <a href="javascript:void(0);" id="site-reward">
+        <i class="fa fa-thumbs-up"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+    <a id="share-btn-twitter" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+  
+  
+    <a id="share-btn-facebook" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-facebook"></i>
+    </a>
+  
+  
+    <a id="share-btn-weibo" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-weibo"></i>
+    </a>
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+
+
+
+
+
+    
+  </body>
+</html>

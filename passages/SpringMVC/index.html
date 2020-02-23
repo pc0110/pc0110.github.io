@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+  
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta name="author" content="xxx">
+  
+  
+  <title>SpringMVC | Hexo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="SpringMVC - java,">
+  
+
+  
+  <meta name="description" content="xxx">
+
+  
+
+  
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+  
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"MDoK06tUeJNe9gUQnRye15hO-gzGzoHsz","appkey":"c0Irl5sjfr5NqD3wIbJrMCDA","comment":true,"count":true},
+    welcome: {"enable":false,"interval":30},
+    start_time: "2019-10-16",
+    passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
+    is_post: true,
+    lock: false,
+    author: "xxx",
+    share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/blog/"
+  };
+</script>
+
+  <script src="/blog/vendor/sha256.min.js"></script>
+<script src="/blog/js/auth.js"></script>
+<script src="/blog/js/index.js"></script>
+<script src="/blog/vendor/qrcode.min.js"></script>
+
+  
+    <link rel="icon" href="/blog/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/blog/images/touch-icon.png">
+  
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/blog/css/index.css">
+<link rel="stylesheet" href="/blog/styles/components/highlight/highlight.css">
+
+  
+</head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/blog/">xxx</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | 不要忘记，你依然是个菜鸡！</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/blog/" target="_self">首页</a>
+      
+        <a href="/blog/archives/" target="_self">归档</a>
+      
+        <a href="/blog/tags/" target="_self">标签</a>
+      
+        <a href="/blog/categories/" target="_self">分类</a>
+      
+        <a href="/blog/friends/" target="_self">友链</a>
+      
+        <a href="/blog/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/hahahashiqi/" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/blog/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/friends/" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-10-16
+    </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    SpringMVC
+  </h1>
+  
+  <article class="passage-article">
+    <h1 id="1-找相应的JAR包："><a href="#1-找相应的JAR包：" class="headerlink" title="1.找相应的JAR包："></a>1.找相应的JAR包：</h1><p>新建一个Springmvc 配置文件：Springmvc.xml<br>选中常用的：beans  aop context mvc</p>
+<h1 id="2-Servlet"><a href="#2-Servlet" class="headerlink" title="2.Servlet"></a>2.Servlet</h1><p>Java类必须符合一定的规范：<br>a.必须继承 javax.servlet.http.HttpServlet<br>b.重写其中的doGet()和doPost()方法<br>Servlet要想使用，必须配置<br>Servlet2.5:web.xml<br>Servlet3.0:@WebServlet</p>
+<h3 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h3><p>–编写一个类继承Servlet<br>–重写doPost,doGet方法<br>–编写web.xml文件中的Servlet-mapping的映射关系<br>还可以新建一个Servlet，Eclipse会自动生成相关的配置信息</p>
+<p>web.xml中的/：        <a href="http://localhost:8888/Servlet30" target="_blank" rel="noopener">http://localhost:8888/Servlet30</a>   代表项目根路径<br>jap 中的/：        <a href="http://localhost:8888" target="_blank" rel="noopener">http://localhost:8888</a>          服务器根路径      </p>
+<p>构建路径，WebContent:根目录</p>
+<h1 id="Servlet-的生命周期："><a href="#Servlet-的生命周期：" class="headerlink" title="Servlet 的生命周期："></a>Servlet 的生命周期：</h1><p>加载–初始化———–        服务          ———-销毁—-卸载</p>
+<p>加载<br>初始化  init()， 该方法会在Servlet被实例化后 执行<br>服务  Service()-&gt;doGet()  ,doPost()<br>销毁   destory(), Servlet被系统回收时执行<br>卸载</p>
+<p>init（）第一次访问 触发只执行一次 可以让tomcat启动时自动执行<br>–tomcat2.:卸载xml文件里      <load-on-startup>1</load-on-startup>            1先后顺序<br>–toncat3：@WebServlet(value = “/WebcomeServlet”,loadOnStartup = 1)<br>Service()-&gt;doGet()  ,doPost()  调用几次  执行几次<br>destory() 关闭tomcat 服务器时会被执行</p>
+<h1 id="5-Servlet-API"><a href="#5-Servlet-API" class="headerlink" title="5.Servlet API:"></a>5.Servlet API:</h1><p>由两个软件包组成：对应与Http协议的软件包，对应于除了HTTP协议以为ia的其他软件包即Servlet API 可以适用于 任何通信协议<br>我们学习的Servelt  时位于javax.servlet.http.HttpServlet;</p>
+<h1 id="6-Servlet继承关系："><a href="#6-Servlet继承关系：" class="headerlink" title="6.Servlet继承关系："></a>6.Servlet继承关系：</h1><p>ServletConfig():接口<br>getServletContext getServletContext():获取Servlet上下文对象  application<br>String getInitParameter(String name) 在当前的Servlet范围内，获取名为name的参数值（初始化参数）</p>
+<p>a.ServletContext中常见的方法（application）：<br>getContextPath(): 相对路径<br>getRealPath():绝对路径<br>setAttribute(),getAttribute() String getInitParameter(String name):在当前Servlet范围内，获取名为name的参数值（初始化参数）</p>
+<p>Servlet3.0方式 给当前Servlet设置初始值：<br>@WebServlet(…………..,initParams = {@WebInitParam(name=”servletparament30”,value = “servletpatamentvalues30…..”)})<br>此注解只隶属于Servlet 因此无法为web容器设置初始化参数 要想设置 只能在web.xml文件中配置</p>
+<h1 id="1-三层架构："><a href="#1-三层架构：" class="headerlink" title="1.三层架构："></a>1.三层架构：</h1><p>–与MVC设计模式的目标一致：都是为了解耦合，提高代码的复用率</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">表示层（UI）：  </span><br><span class="line">            前台：对应于MVC 的 VIEW 用于和用户交互，界面的显示</span><br><span class="line">			Webcontent</span><br><span class="line"></span><br><span class="line">	        后台：对应于MVC 的 Contoller用于控制跳转，调用业务逻辑层</span><br><span class="line">			Servlet ，（Spring MVC 、Struts2）</span><br><span class="line">			xxx.servlet</span><br><span class="line"></span><br><span class="line">业务逻辑层(BLL)：对应于MVC的Model  逻辑业务模型</span><br><span class="line">	组装数据访问层	，逻辑性的操作（CRUD：删：查+删）</span><br><span class="line">		xxx.service</span><br><span class="line">        </span><br><span class="line">数据访问层(DAL)：对应于MVC的Model 数据模型</span><br><span class="line">	直接访问数据库的操作，原子性的操作（CRUD）</span><br><span class="line">		xxx.dao</span><br></pre></td></tr></table></figure>
+
+<h5 id="三层的关系：高内聚、低耦合"><a href="#三层的关系：高内聚、低耦合" class="headerlink" title="三层的关系：高内聚、低耦合"></a>三层的关系：高内聚、低耦合</h5><p>–上层（表示层）：上层依赖下层 持有成员变量，有A 的前提  是必须现有B<br>–下层（业务逻辑层，数据访问层）</p>
+<p>三层架构是典型的架构模式，是典型的上下层关系，存在上依赖下层，但是MVC 不存在上下层的关系，而是相互协作的关系，两者之间没有可比性，是应用于不同领域的技术。</p>
+<h5 id="三层优化："><a href="#三层优化：" class="headerlink" title="三层优化："></a>三层优化：</h5><p>–面向接口开发：先开发接口，再实现类</p>
+<h3 id="让Spring-MVC-访问静态资源，只需要加入两个注解："><a href="#让Spring-MVC-访问静态资源，只需要加入两个注解：" class="headerlink" title="让Spring MVC 访问静态资源，只需要加入两个注解："></a>让Spring MVC 访问静态资源，只需要加入两个注解：</h3><!-- 加载动态资源和静态资源所协调的两个注解-->
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;mvc:annotation-driven&gt;&lt;/mvc:annotation-driven&gt;</span><br><span class="line"></span><br><span class="line">&lt;mvc:default-servlet-handler&gt;&lt;/mvc:default-servlet-handler&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Tomcat默认的Servlet"><a href="#Tomcat默认的Servlet" class="headerlink" title="Tomcat默认的Servlet"></a>Tomcat默认的Servlet</h1><p>conf/settings.xml</p>
+<h3 id="Spring-MVC-自带类型转换器"><a href="#Spring-MVC-自带类型转换器" class="headerlink" title="Spring MVC 自带类型转换器"></a>Spring MVC 自带类型转换器</h3><p>&lt;S，T&gt; 两个泛型约束 S 代表 的是源数据类型，T 代表的是泛型约束<br>1.将自定义的类型转换器纳入Spring IOC容器中<br>2.将容器再放入SpringMVC提供的bean中</p>
+<p>@RequestParam(“”)是一个触发器的桥梁，当你修饰的对象和SpringMVC 发现的对象不一致时他会转换成你需要的对象属性</p>
+<h1 id="数据格式化的注解"><a href="#数据格式化的注解" class="headerlink" title="数据格式化的注解"></a>数据格式化的注解</h1><p>1.配置你所需要的Bean<br>2.@DateTimeFormat(“pattern=”yyyy-MM-dd”)   @NumberFormat(pattern=”###,#”)</p>
+<h1 id="数据校验"><a href="#数据校验" class="headerlink" title="数据校验"></a>数据校验</h1><p>实现一个SpringMVC 的一个接口 SpringMVC 会帮你自动搞定<br>加入这个注解 自动加载一个LocalValidatoryBean 他是ValidatoryFactory的一个实现类<br><a href="mvc:annotation-driven" target="_blank" rel="noopener">mvc:annotation-driven</a></p>
+<h1 id="Spring-MVC-文件上传处理方法"><a href="#Spring-MVC-文件上传处理方法" class="headerlink" title="Spring MVC 文件上传处理方法"></a>Spring MVC 文件上传处理方法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(value=&quot;testUpload&quot;)</span><br><span class="line">public String testUpload(@RequestParam(&apos;desc&apos;) String desc, @RequestParam(&apos;file&apos;) String file)&#123;</span><br><span class="line">		System.out.println(&quot;文件描述信息&quot;+desc);</span><br><span class="line"></span><br><span class="line">		InputStream input = file.getInputStream();</span><br><span class="line">		String fileName = file.getOriginalFilename();</span><br><span class="line"></span><br><span class="line">		OutStream out = new FileOutStream(&quot;d:\\&quot;+fileName);</span><br><span class="line">		</span><br><span class="line">		byte[] bs = new byte[1024];</span><br><span class="line">		int len = -1;</span><br><span class="line"></span><br><span class="line">		whiel((len = input.read(bs))!= -1)&#123;</span><br><span class="line">			out.write(	bs, 0, len);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h1><p>1.编写拦截器implements HandlerInterceptor<br>2.配置：将自己写的拦截器 配置到SpringMVC中</p>
+<p>拦截器1 拦截请求-拦截器2 拦截请求-请求方法-拦截器2 处理响应-拦截器1处理响应 只会被最后一个拦截器的afterComplrtion渲染</p>
+<h1 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h1><p>SpringMVC: HandlerExceptionResolver接口<br>该接口的每个实现类 都是异常的一种处理方式<br>ExceptionHandlerExceptionResolver: 提供了@ExceptionHandler注解，并通过该注解处理<br>//该方法可以捕获ArithmeticException异常</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@ExceptionHandler(&#123;ArithmeticException.class&#125;)</span><br><span class="line">public String handlerArithmeticException(ArithmeticException e)&#123;</span><br><span class="line">    System.out.println(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>@ExceptionHandler标识的方法的参数 必须在异常类型（Throwable或其子类）</p>
+<p>异常处理路径：最短优先<br>ExceptionHandler 只能捕获当前类中的异常方法<br>如果是其他类 则可以加一个注解</p>
+<p>b.ResponseStatusExceptionResolver 自定义异常显示界面<br>@ResponseStatus(value=”HttpStatus.FORBIDDEN,reason=”数组越界！！”) 类 加上这个注解</p>
+<p>@ResponseStatus 也可以标识在方法前</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>如果一个方法用于处理异常， 并且只处理当前类中的异常：@ExceptionHandler<br>如果一个方法用于处理所有类的异常：类前加@ControllerAdvice 处理异常的方法前加@ExceptionHandler</p>
+
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-找相应的JAR包："><span class="toc-text">1.找相应的JAR包：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Servlet"><span class="toc-text">2.Servlet</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤："><span class="toc-text">步骤：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Servlet-的生命周期："><span class="toc-text">Servlet 的生命周期：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-Servlet-API"><span class="toc-text">5.Servlet API:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-Servlet继承关系："><span class="toc-text">6.Servlet继承关系：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-三层架构："><span class="toc-text">1.三层架构：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#三层的关系：高内聚、低耦合"><span class="toc-text">三层的关系：高内聚、低耦合</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#三层优化："><span class="toc-text">三层优化：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#让Spring-MVC-访问静态资源，只需要加入两个注解："><span class="toc-text">让Spring MVC 访问静态资源，只需要加入两个注解：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Tomcat默认的Servlet"><span class="toc-text">Tomcat默认的Servlet</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-MVC-自带类型转换器"><span class="toc-text">Spring MVC 自带类型转换器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据格式化的注解"><span class="toc-text">数据格式化的注解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据校验"><span class="toc-text">数据校验</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring-MVC-文件上传处理方法"><span class="toc-text">Spring MVC 文件上传处理方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#拦截器"><span class="toc-text">拦截器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#异常处理"><span class="toc-text">异常处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+  </div>
+</aside>
+  
+  
+    <div class="passage-tags">
+     
+      <a href="/blog/tags/SpringMVC-java/"><i class="fa fa-tags"></i>SpringMVC - java</a>
+    
+    </div>
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">博客推荐</h5>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self"></a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="http://baidu.com/" target="_blank">百度</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">系列教程</h5>
+          
+            <span class="site-footer-item">
+              <a href="#" target="_self">webpack4系列教程</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="#" target="_self">设计模式手册</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">抓到我</h5>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self">掘金</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self">思否</a>
+            </span>
+          
+        </div>
+      
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: 
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <div class="site-layer-input-choose">
+          <a href="javascript:void(0);" title="Change Search Engine">Google</a>
+        </div>
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      
+        <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+          
+            <div>
+              <img src="/blog/images/wechat.png" alt="WeChat">
+              
+                <p>WeChat</p>
+              
+            </div>
+          
+            <div>
+              <img src="/blog/images/alipay.png" alt="AliPay">
+              
+                <p>AliPay</p>
+              
+            </div>
+          
+        </div>
+      
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="/blog/passages/Expression-Language/" data-enable="true">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/blog/passages/paging/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    
+      <a href="javascript:void(0);" id="site-reward">
+        <i class="fa fa-thumbs-up"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+    <a id="share-btn-twitter" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+  
+  
+    <a id="share-btn-facebook" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-facebook"></i>
+    </a>
+  
+  
+    <a id="share-btn-weibo" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-weibo"></i>
+    </a>
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+
+
+
+
+
+    
+  </body>
+</html>

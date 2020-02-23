@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+  
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta name="author" content="xxx">
+  
+  
+  <title>Ajax | Hexo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Jsp,">
+  
+
+  
+  <meta name="description" content="xxx">
+
+  
+
+  
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+  
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"MDoK06tUeJNe9gUQnRye15hO-gzGzoHsz","appkey":"c0Irl5sjfr5NqD3wIbJrMCDA","comment":true,"count":true},
+    welcome: {"enable":false,"interval":30},
+    start_time: "2019-10-16",
+    passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
+    is_post: true,
+    lock: false,
+    author: "xxx",
+    share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/blog/"
+  };
+</script>
+
+  <script src="/blog/vendor/sha256.min.js"></script>
+<script src="/blog/js/auth.js"></script>
+<script src="/blog/js/index.js"></script>
+<script src="/blog/vendor/qrcode.min.js"></script>
+
+  
+    <link rel="icon" href="/blog/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/blog/images/touch-icon.png">
+  
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/blog/css/index.css">
+<link rel="stylesheet" href="/blog/styles/components/highlight/highlight.css">
+
+  
+</head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/blog/">xxx</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | 不要忘记，你依然是个菜鸡！</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/blog/" target="_self">首页</a>
+      
+        <a href="/blog/archives/" target="_self">归档</a>
+      
+        <a href="/blog/tags/" target="_self">标签</a>
+      
+        <a href="/blog/categories/" target="_self">分类</a>
+      
+        <a href="/blog/friends/" target="_self">友链</a>
+      
+        <a href="/blog/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/hahahashiqi/" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/blog/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/friends/" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/blog/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-10-18
+    </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    Ajax
+  </h1>
+  
+  <article class="passage-article">
+    <h1 id="异步刷新-js和xml"><a href="#异步刷新-js和xml" class="headerlink" title="异步刷新 js和xml"></a>异步刷新 js和xml</h1><p>异步刷新：如果网页中的某一个地方需要修改，异步刷新可以使：只刷新需要修改的地方，而页面其他的地方保持不变<br>例如：百度搜索框</p>
+<h3 id="实现："><a href="#实现：" class="headerlink" title="实现："></a>实现：</h3><h3 id="jquery-常用"><a href="#jquery-常用" class="headerlink" title="jquery:(常用)"></a>jquery:(常用)</h3><h6 id="ajax"><a href="#ajax" class="headerlink" title="ajax"></a>ajax</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$.ajax(&#123;</span><br><span class="line">url:服务器地址,</span><br><span class="line">请求方式:post|get,</span><br><span class="line">data：请求的数据,</span><br><span class="line">success:function(result,testStatus)&#123;</span><br><span class="line"></span><br><span class="line">&#125;,</span><br><span class="line">error:function(xhr,errorMessage,e)&#123;</span><br><span class="line">        </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h6 id="第二种方式-get-post-load"><a href="#第二种方式-get-post-load" class="headerlink" title="第二种方式 get post load"></a>第二种方式 get post load</h6><p>$.get(<br>服务器地址,<br>请求数据,<br>function (result){</p>
+<p>}<br>)<br>$.post(<br>服务器地址,<br>请求数据,<br>function (result){</p>
+<p>},<br>预期返回值类型(string\xml) -&gt; “text”   “json”  “xml”<br>);</p>
+<p>将服务端的返回值，返回到load选择的元素中(“#tip”)<br>$(“#tip”).load(<br>服务器地址,<br>请求数据,</p>
+<p>把返回值放到Servlet中去  用<span id="tip"></span>显示<br>);</p>
+<h1 id="json-数组"><a href="#json-数组" class="headerlink" title="json 数组"></a>json 数组</h1><p>var student = {“name”:”name”,”sno”:12}<br>var students = [<br>        {“name”:”name”,”sno”:12}<br>        {“name”:”name”,”sno”:122}<br>        {“name”:”name”,”sno”:1222}<br>]<br>alter(studnets[1].name+”—-“+students.sno[1]);</p>
+<h6 id="getJSON"><a href="#getJSON" class="headerlink" title="$.getJSON()"></a>$.getJSON()</h6><p>$.getJSON(<br>服务器地址,<br>json格式的请求数据,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function (result)&#123;</span><br><span class="line">        if(result.msg==&quot;true&quot;)&#123;//msg:true|false </span><br><span class="line">				alert(&quot;请更换号码，此号码已存在&quot;);</span><br><span class="line">			&#125;else&#123;</span><br><span class="line">				alert(&quot;注册成功&quot;);</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>如果前端的返回值是json格式 服务端传值也要是json<br>out.write(“{&quot;msg&quot;:”&quot;true&quot;}”);   write只有一个参数  ，里面的引号 通过转义字符显示</p>
+<h3 id="js-XMLHttpRequest"><a href="#js-XMLHttpRequest" class="headerlink" title="js:  XMLHttpRequest"></a>js:  XMLHttpRequest</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">XMlHttpRequest对象的方法：</span><br><span class="line">Open(方法名(提交方式get|post),服务器地址，ture):与服务器建立连接   </span><br><span class="line">send():</span><br><span class="line">    get: send(null)</span><br><span class="line">    post: send(参数值))</span><br><span class="line">setRquestHeader(header,value):</span><br><span class="line">    get:不需要设置此方法</span><br><span class="line">    post:需要设置：</span><br><span class="line">            a.如果请求的元素中包含了上传文件：</span><br><span class="line">                    setRequestHeader(&quot;Content-Type&quot;,&quot;multipart/from-data&quot;);</span><br><span class="line">            b.不包含了上传文件</span><br><span class="line">                    setRequestHeader(&quot;Content-Type&quot;,&quot;application/x-www-form-urlencoded&quot;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="XMLHttpRquest对象的属性："><a href="#XMLHttpRquest对象的属性：" class="headerlink" title="XMLHttpRquest对象的属性："></a>XMLHttpRquest对象的属性：</h3><p>readyState:请求状态  0-4 只有状态为4 代表请求完毕<br>status:响应状态     只有200代表响应正常<br>onreadystatechange: 回调函数<br>responseText:响应格式为String<br>responseXML:响应格式为XML</p>
+
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#异步刷新-js和xml"><span class="toc-text">异步刷新 js和xml</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实现："><span class="toc-text">实现：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jquery-常用"><span class="toc-text">jquery:(常用)</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#ajax"><span class="toc-text">ajax</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#第二种方式-get-post-load"><span class="toc-text">第二种方式 get post load</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#json-数组"><span class="toc-text">json 数组</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#getJSON"><span class="toc-text">$.getJSON()</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#js-XMLHttpRequest"><span class="toc-text">js:  XMLHttpRequest</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XMLHttpRquest对象的属性："><span class="toc-text">XMLHttpRquest对象的属性：</span></a></li></ol></li></ol></li></ol>
+  </div>
+</aside>
+  
+  
+    <div class="passage-tags">
+     
+      <a href="/blog/tags/Jsp/"><i class="fa fa-tags"></i>Jsp</a>
+    
+    </div>
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">博客推荐</h5>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self"></a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="http://baidu.com/" target="_blank">百度</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">系列教程</h5>
+          
+            <span class="site-footer-item">
+              <a href="#" target="_self">webpack4系列教程</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="#" target="_self">设计模式手册</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">抓到我</h5>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self">掘金</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="" target="_self">思否</a>
+            </span>
+          
+        </div>
+      
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: 
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <div class="site-layer-input-choose">
+          <a href="javascript:void(0);" title="Change Search Engine">Google</a>
+        </div>
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      
+        <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+          
+            <div>
+              <img src="/blog/images/wechat.png" alt="WeChat">
+              
+                <p>WeChat</p>
+              
+            </div>
+          
+            <div>
+              <img src="/blog/images/alipay.png" alt="AliPay">
+              
+                <p>AliPay</p>
+              
+            </div>
+          
+        </div>
+      
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="/blog/passages/Tomcat-dbcp/" data-enable="true">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/blog/passages/Listner/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    
+      <a href="javascript:void(0);" id="site-reward">
+        <i class="fa fa-thumbs-up"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+    <a id="share-btn-twitter" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+  
+  
+    <a id="share-btn-facebook" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-facebook"></i>
+    </a>
+  
+  
+    <a id="share-btn-weibo" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-weibo"></i>
+    </a>
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+
+
+
+
+
+    
+  </body>
+</html>
